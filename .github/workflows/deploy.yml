@@ -39,11 +39,9 @@ jobs:
           touch out/.nojekyll
 
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
-          path: |
-            out
+          path: out
 
   deploy:
     name: Deploy
