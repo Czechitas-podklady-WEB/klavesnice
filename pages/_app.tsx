@@ -7,6 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		<>
 			<Head>
 				<title>Klávesnice</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 			<Component {...pageProps} />
 		</>
