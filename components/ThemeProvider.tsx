@@ -4,6 +4,7 @@ import {
 	ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles'
 import { FunctionComponent, ReactNode, useMemo } from 'react'
+import { useIsPrinting } from '../utilities/useIsPrinting'
 
 export interface ThemeProviderProps {
 	children: ReactNode
@@ -15,12 +16,13 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
 	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', {
 		defaultMatches: true, // Prevents white flash in dark theme
 	})
+	const isPrinting = useIsPrinting()
 
 	const theme = useMemo(
 		() =>
 			createTheme({
 				palette: {
-					mode: prefersDarkMode ? 'dark' : 'light',
+					mode: prefersDarkMode && !isPrinting ? 'dark' : 'light',
 				},
 			}),
 		[prefersDarkMode],
