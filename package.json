@@ -33,6 +33,7 @@
 		"next": "^13.1.6",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"svg-sprite-loader": "^6.0.11",
 		"typescript": "^4.9.5",
 		"use-storage-backed-state": "^0.2.4"
 	}

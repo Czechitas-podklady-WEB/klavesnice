@@ -1,3 +1,6 @@
+import { ReactNode } from 'react'
+import { Icon } from '../components/Icon'
+
 export type Position = {
 	row: number
 	column: number
@@ -6,10 +9,10 @@ export type Position = {
 }
 
 export type Key = {
-	primary?: string
-	secondary?: string
-	tertiary?: string
-	quaternary?: string
+	primary?: ReactNode
+	secondary?: ReactNode
+	tertiary?: ReactNode
+	quaternary?: ReactNode
 	isSpecial?: boolean
 	position: Position
 }
@@ -278,7 +281,7 @@ export const keyboards: {
 				position: { row: 5, column: 1, width: 5, height: 1 },
 			},
 			system: {
-				primary: '🪟',
+				primary: <Icon name="windowsLogo" />,
 				isSpecial: true,
 				position: { row: 5, column: 6, width: 4, height: 1 },
 			},
