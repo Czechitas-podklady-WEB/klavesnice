@@ -13,8 +13,8 @@ export interface ThemeProviderProps {
 export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
 	children,
 }) => {
-	const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', {
-		defaultMatches: true, // Prevents white flash in dark theme
+	const prefersLightMode = useMediaQuery('(prefers-color-scheme: light)', {
+		defaultMatches: false, // Prevents white flash in dark theme
 	})
 	const isPrinting = useIsPrinting()
 
@@ -22,10 +22,10 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
 		() =>
 			createTheme({
 				palette: {
-					mode: prefersDarkMode && !isPrinting ? 'dark' : 'light',
+					mode: prefersLightMode || isPrinting ? 'light' : 'dark',
 				},
 			}),
-		[prefersDarkMode],
+		[prefersLightMode, isPrinting],
 	)
 
 	return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>

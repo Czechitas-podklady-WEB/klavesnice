@@ -14,6 +14,7 @@ import { HideInPrint } from '../components/HideInPrint'
 import { Images } from '../components/Images'
 import { Keyboard } from '../components/Keyboard'
 import { languages, operatingSystems } from '../utilities/keyboards'
+import { print } from '../utilities/useIsPrinting'
 import { hideInPrintClass } from './_app'
 
 const allValue = 'all' as const
@@ -101,7 +102,7 @@ export default function Index() {
 					<Typography align="right">
 						<Button
 							onClick={() => {
-								window.print()
+								print()
 							}}
 							variant="outlined"
 							endIcon={<PrintIcon />}
