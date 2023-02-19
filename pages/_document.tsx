@@ -5,6 +5,7 @@ export default function Document() {
 		<Html lang="cs">
 			<Head>
 				<meta name="color-scheme" content="light dark" />
+				<link rel="shortcut icon" href="icon.svg" />
 				<meta
 					name="theme-color"
 					media="(prefers-color-scheme: light)"
