@@ -54,7 +54,7 @@
 }
 
 .key.is_special {
-	justify-items: start;
+	/* justify-items: start; Set start only to first in a row */
 	align-items: center;
 }
 
