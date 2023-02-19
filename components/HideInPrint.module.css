@@ -1,0 +1,10 @@
+.wrapper {
+	display: contents;
+}
+
+@media print {
+	.wrapper,
+	:not(.wrapper):global(.hideInPrint) {
+		display: none !important;
+	}
+}

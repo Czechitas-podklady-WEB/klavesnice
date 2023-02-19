@@ -4,6 +4,8 @@ import Head from 'next/head'
 import { ThemeProvider } from '../components/ThemeProvider'
 import '../styles/globals.css'
 
+export const hideInPrintClass = 'hideInPrint'
+
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<ThemeProvider>

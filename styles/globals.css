@@ -1,9 +1,20 @@
+body {
+	padding-top: 2rem;
+	padding-bottom: 3rem;
+}
+
 img {
 	width: 100%;
 	height: auto;
 }
 
-body {
-	padding-top: 2rem;
-	padding-bottom: 3rem;
+@media print {
+	@page {
+		size: landscape;
+		margin: 0;
+	}
+	body {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
 }

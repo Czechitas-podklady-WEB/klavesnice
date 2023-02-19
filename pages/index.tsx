@@ -8,8 +8,10 @@ import {
 } from '@mui/material'
 import FormControl from '@mui/material/FormControl'
 import { useStorageBackedState } from 'use-storage-backed-state'
+import { HideInPrint } from '../components/HideInPrint'
 import { Images } from '../components/Images'
 import { Keyboard, languages, operatingSystems } from '../components/Keyboard'
+import { hideInPrintClass } from './_app'
 
 const allValue = 'all' as const
 
@@ -25,11 +27,13 @@ export default function Index() {
 
 	return (
 		<Container>
-			<Typography variant="h2" component="h1" gutterBottom>
-				Klávesnice
-			</Typography>
+			<HideInPrint>
+				<Typography variant="h2" component="h1" gutterBottom>
+					Klávesnice
+				</Typography>
+			</HideInPrint>
 			<Grid container spacing={2}>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} sm={6} className={hideInPrintClass}>
 					<FormControl sx={{ minWidth: 160 }} fullWidth>
 						<InputLabel id="operating-system-label">Operační systém</InputLabel>
 						<Select
@@ -49,7 +53,7 @@ export default function Index() {
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item xs={12} sm={6}>
+				<Grid item xs={12} sm={6} className={hideInPrintClass}>
 					<FormControl sx={{ minWidth: 160 }} fullWidth>
 						<InputLabel id="language-label">Jazyk</InputLabel>
 						<Select
@@ -69,7 +73,6 @@ export default function Index() {
 						</Select>
 					</FormControl>
 				</Grid>
-
 				{(
 					Object.keys(operatingSystems) as (keyof typeof operatingSystems)[]
 				).map((operatingSystem) =>
