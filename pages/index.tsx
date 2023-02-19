@@ -12,7 +12,8 @@ import FormControl from '@mui/material/FormControl'
 import { useStorageBackedState } from 'use-storage-backed-state'
 import { HideInPrint } from '../components/HideInPrint'
 import { Images } from '../components/Images'
-import { Keyboard, languages, operatingSystems } from '../components/Keyboard'
+import { Keyboard } from '../components/Keyboard'
+import { languages, operatingSystems } from '../utilities/keyboards'
 import { hideInPrintClass } from './_app'
 
 const allValue = 'all' as const
