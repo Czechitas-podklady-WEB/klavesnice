@@ -1,4 +1,6 @@
+import PrintIcon from '@mui/icons-material/Print'
 import {
+	Button,
 	Container,
 	Grid,
 	InputLabel,
@@ -93,6 +95,19 @@ export default function Index() {
 				)}
 				<Grid item xs={12}>
 					<Images />
+				</Grid>
+				<Grid item xs={12} className={hideInPrintClass}>
+					<Typography align="right">
+						<Button
+							onClick={() => {
+								window.print()
+							}}
+							variant="outlined"
+							endIcon={<PrintIcon />}
+						>
+							Vytisknout
+						</Button>
+					</Typography>
 				</Grid>
 			</Grid>
 		</Container>
