@@ -7,14 +7,21 @@ import {
 	Typography,
 } from '@mui/material'
 import FormControl from '@mui/material/FormControl'
-import { useState } from 'react'
+import { useStorageBackedState } from 'use-storage-backed-state'
 import { Images } from '../components/Images'
+import { Keyboard, languages, operatingSystems } from '../components/Keyboard'
+
+const allValue = 'all' as const
 
 export default function Index() {
-	const [operatingSystem, setOperatingSystem] = useState<
-		'all' | 'windows' | 'mac'
-	>('all')
-	const [language, setLanguage] = useState<'all' | 'cs' | 'en-us'>('all')
+	const [selectedOperatingSystem, setSelectedOperatingSystem] =
+		useStorageBackedState<typeof allValue | keyof typeof operatingSystems>(
+			allValue,
+			'operating-system',
+		)
+	const [selectedLanguage, setSelectedLanguage] = useStorageBackedState<
+		typeof allValue | keyof typeof languages
+	>(allValue, 'language')
 
 	return (
 		<Container>
@@ -27,15 +34,18 @@ export default function Index() {
 						<InputLabel id="operating-system-label">Operační systém</InputLabel>
 						<Select
 							labelId="operating-system-label"
-							value={operatingSystem}
+							value={selectedOperatingSystem}
 							label="Operační systém"
 							onChange={(event) => {
-								setOperatingSystem(event.target.value as any)
+								setSelectedOperatingSystem(event.target.value as any)
 							}}
 						>
-							<MenuItem value="all">Všechny</MenuItem>
-							<MenuItem value="windows">Windows</MenuItem>
-							<MenuItem value="mac">Mac</MenuItem>
+							<MenuItem value={allValue}>Všechny</MenuItem>
+							{Object.entries(operatingSystems).map(([key, value]) => (
+								<MenuItem key={key} value={key}>
+									{value}
+								</MenuItem>
+							))}
 						</Select>
 					</FormControl>
 				</Grid>
@@ -44,18 +54,40 @@ export default function Index() {
 						<InputLabel id="language-label">Jazyk</InputLabel>
 						<Select
 							labelId="language-label"
-							value={language}
+							value={selectedLanguage}
 							label="Jazyk"
 							onChange={(event) => {
-								setLanguage(event.target.value as any)
+								setSelectedLanguage(event.target.value as any)
 							}}
 						>
-							<MenuItem value="all">Všechny</MenuItem>
-							<MenuItem value="cs">Čeština</MenuItem>
-							<MenuItem value="en-us">Americká angličtina</MenuItem>
+							<MenuItem value={allValue}>Všechny</MenuItem>
+							{Object.entries(languages).map(([key, value]) => (
+								<MenuItem key={key} value={key}>
+									{value}
+								</MenuItem>
+							))}
 						</Select>
 					</FormControl>
 				</Grid>
+
+				{(
+					Object.keys(operatingSystems) as (keyof typeof operatingSystems)[]
+				).map((operatingSystem) =>
+					(Object.keys(languages) as (keyof typeof languages)[]).map(
+						(language) =>
+							(selectedOperatingSystem === allValue ||
+								selectedOperatingSystem === operatingSystem) &&
+							(selectedLanguage === allValue ||
+								selectedLanguage === language) && (
+								<Grid item xs={12} key={`${operatingSystem}_${language}`}>
+									<Keyboard
+										operatingSystem={operatingSystem}
+										language={language}
+									/>
+								</Grid>
+							),
+					),
+				)}
 				<Grid item xs={12}>
 					<Images />
 				</Grid>
