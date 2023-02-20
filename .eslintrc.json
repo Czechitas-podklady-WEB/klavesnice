@@ -1,0 +1,25 @@
+{
+	"extends": [
+		"next",
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "prettier"],
+	"rules": {
+		"prettier/prettier": "error",
+		"arrow-parens": ["error", "always"],
+		"@next/next/no-img-element": "off",
+		"import/no-anonymous-default-export": "off",
+		"react/display-name": "off",
+		"@typescript-eslint/consistent-type-imports": "error",
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"ignoreRestSiblings": true,
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_"
+			}
+		]
+	}
+}

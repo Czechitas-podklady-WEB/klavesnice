@@ -3,7 +3,8 @@ import {
 	createTheme,
 	ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles'
-import { FunctionComponent, ReactNode, useMemo } from 'react'
+import type { FunctionComponent, ReactNode } from 'react'
+import { useMemo } from 'react'
 import { useIsPrinting } from '../utilities/useIsPrinting'
 
 export interface ThemeProviderProps {
@@ -25,7 +26,7 @@ export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
 					mode: prefersLightMode || isPrinting ? 'light' : 'dark',
 				},
 			}),
-		[prefersLightMode, isPrinting],
+		[isPrinting, prefersLightMode],
 	)
 
 	return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>

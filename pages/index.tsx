@@ -45,6 +45,7 @@ export default function Index() {
 							value={selectedOperatingSystem}
 							label="Operační systém"
 							onChange={(event) => {
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								setSelectedOperatingSystem(event.target.value as any)
 							}}
 						>
@@ -65,6 +66,7 @@ export default function Index() {
 							value={selectedLanguage}
 							label="Jazyk"
 							onChange={(event) => {
+								// eslint-disable-next-line @typescript-eslint/no-explicit-any
 								setSelectedLanguage(event.target.value as any)
 							}}
 						>
