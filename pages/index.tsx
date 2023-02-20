@@ -13,7 +13,10 @@ import { useStorageBackedState } from 'use-storage-backed-state'
 import { HideInPrint } from '../components/HideInPrint'
 import { Images } from '../components/Images'
 import { Keyboard } from '../components/Keyboard'
-import { languages, operatingSystems } from '../utilities/keyboards'
+import {
+	languages,
+	operatingSystems,
+} from '../utilities/OperatingSystemAndLanguage'
 import { print } from '../utilities/useIsPrinting'
 import { hideInPrintClass } from './_app'
 
