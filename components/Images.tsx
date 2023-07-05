@@ -6,9 +6,14 @@ import windows from '../images/windows.png'
 export const Images: FunctionComponent = () => {
 	return (
 		<div>
-			<Image {...windows} alt="Windows" />
+			<Image
+				src={windows.src}
+				width={windows.width}
+				height={windows.height}
+				alt="Windows"
+			/>
 			<br />
-			<Image {...mac} alt="Mac" />
+			<Image src={mac.src} width={mac.width} height={mac.height} alt="Mac" />
 		</div>
 	)
 }
