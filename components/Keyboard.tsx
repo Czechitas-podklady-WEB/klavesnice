@@ -6,6 +6,7 @@ import {
 	operatingSystems,
 } from '../utilities/OperatingSystemAndLanguage'
 import { hotkeyTargets } from '../utilities/hotkeyTargets'
+import type { Key } from '../utilities/keyboards'
 import { keyboards } from '../utilities/keyboards'
 import type { Hotkey } from './Hotkeys'
 import { Hotkeys } from './Hotkeys'
@@ -25,12 +26,24 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 	const hotkeys = useMemo<Hotkey[]>(
 		() =>
 			Object.entries(hotkeyTargets).map(([name, target]) => ({
-				name,
+				name: name as keyof typeof hotkeyTargets,
 				label: target.label,
 				symbol: target.symbol,
-				keys: {},
+				keys: Object.fromEntries(
+					Object.entries(keys).filter((entry) => {
+						const name = entry[0] as (typeof hotkeyTargets)[number]
+						const key: Key = entry[1]
+						const hotkeyTargets = [
+							...(key.primary?.hotkeyTargets ?? []),
+							...(key.secondary?.hotkeyTargets ?? []),
+							...(key.tertiary?.hotkeyTargets ?? []),
+							...(key.quaternary?.hotkeyTargets ?? []),
+						]
+						return hotkeyTargets?.includes(name)
+					}),
+				),
 			})),
-		[],
+		[keys],
 	)
 
 	return (

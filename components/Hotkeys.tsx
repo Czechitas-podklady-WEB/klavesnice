@@ -1,9 +1,10 @@
 import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 import type { FunctionComponent } from 'react'
+import type { hotkeyTargets } from '../utilities/hotkeyTargets'
 import type { Key } from '../utilities/keyboards'
 
 export type Hotkey = {
-	name: string
+	name: keyof typeof hotkeyTargets
 	symbol: string
 	label: string
 	keys: {
