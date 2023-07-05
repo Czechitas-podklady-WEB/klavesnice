@@ -1,12 +1,14 @@
 import { Typography } from '@mui/material'
 import clsx from 'clsx'
-import type { CSSProperties, FunctionComponent } from 'react'
-import { keyboards } from '../utilities/keyboards'
+import { useMemo, type CSSProperties, type FunctionComponent } from 'react'
 import {
 	languages,
 	operatingSystems,
 } from '../utilities/OperatingSystemAndLanguage'
-import { HotkeyTargets } from './HotkeyTargets'
+import { hotkeyTargets } from '../utilities/hotkeyTargets'
+import { keyboards } from '../utilities/keyboards'
+import type { Hotkey } from './Hotkeys'
+import { Hotkeys } from './Hotkeys'
 import styles from './Keyboard.module.css'
 
 export interface KeyboardProps {
@@ -20,13 +22,24 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 }) => {
 	const keys = keyboards[operatingSystem][language]
 
+	const hotkeys = useMemo<Hotkey[]>(
+		() =>
+			Object.entries(hotkeyTargets).map(([name, target]) => ({
+				name,
+				label: target.label,
+				symbol: target.symbol,
+				keys: {},
+			})),
+		[],
+	)
+
 	return (
 		<div className={styles.wrapper}>
 			<Typography variant="h4" component="h2" gutterBottom>
 				{operatingSystems[operatingSystem]}{' '}
 				{languages[language].toLocaleLowerCase('cs')}
 			</Typography>
-			<HotkeyTargets />
+			<Hotkeys hotkeys={hotkeys} />
 			<div className={styles.keyboard}>
 				{Object.entries(keys).map(([name, key]) => (
 					<div
