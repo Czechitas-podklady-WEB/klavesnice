@@ -211,6 +211,7 @@ export const keyboards = {
 				position: { row: 3, column: 33, width: 3, height: 1 },
 			},
 			closeQuotes: {
+				secondary: { label: '!', hotkeyTargets: ['exclamationMark'] },
 				quaternary: { label: '§' },
 				position: { row: 3, column: 36, width: 3, height: 1 },
 			},
@@ -223,7 +224,12 @@ export const keyboards = {
 			leftShift: {
 				primary: {
 					label: 'Shift',
-					hotkeyTargets: ['forwardSlash', 'percentage', 'underscore'],
+					hotkeyTargets: [
+						'forwardSlash',
+						'percentage',
+						'underscore',
+						'exclamationMark',
+					],
 				},
 				isSpecial: true,
 				position: { row: 4, column: 1, width: 4, height: 1 },

@@ -120,6 +120,12 @@ export const hotkeyTargets = {
 	questionMark: {
 		symbol: '?',
 		label: 'Otazník',
+		note: 'ternární operátor',
+	},
+	exclamationMark: {
+		symbol: '!',
+		label: 'Vykřičník',
+		note: 'negace',
 	},
 	doubleQuotes: {
 		symbol: '"',
