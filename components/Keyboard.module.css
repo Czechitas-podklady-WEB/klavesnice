@@ -64,3 +64,34 @@
 	grid-column-end: span 2;
 	font-size: 1.2em;
 }
+
+.part {
+	position: relative;
+	padding: 0.1em 0.2em;
+	min-width: 1em;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+.part::before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	inset: -6%;
+	border-radius: 0.2em;
+	background-color: var(--color);
+}
+
+.part.is_color_1 {
+	--color: red;
+}
+.part.is_color_2 {
+	--color: blue;
+}
+.part.is_color_3 {
+	--color: green;
+}
+.part.is_color_4 {
+	--color: magenta;
+}

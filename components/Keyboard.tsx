@@ -75,20 +75,49 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 						}
 					>
 						{'primary' in key && (
-							<span className={styles.primary}>{key.primary.label}</span>
+							<span
+								className={clsx(styles.part, styles.primary, styles.is_color_1)}
+							>
+								{key.primary.label}
+							</span>
 						)}
 						{'secondary' in key && (
-							<span className={styles.secondary}>{key.secondary.label}</span>
+							<span
+								className={clsx(
+									styles.part,
+									styles.secondary,
+									styles.is_color_2,
+								)}
+							>
+								{key.secondary.label}
+							</span>
 						)}
 						{'tertiary' in key && (
-							<span className={styles.tertiary}>{key.tertiary.label}</span>
+							<span
+								className={clsx(
+									styles.part,
+									styles.tertiary,
+									styles.is_color_3,
+								)}
+							>
+								{key.tertiary.label}
+							</span>
 						)}
 						{'quaternary' in key && (
-							<span className={styles.quaternary}>{key.quaternary.label}</span>
+							<span
+								className={clsx(
+									styles.part,
+									styles.quaternary,
+									styles.is_color_4,
+								)}
+							>
+								{key.quaternary.label}
+							</span>
 						)}
 					</div>
 				))}
 			</div>
+			<pre>{JSON.stringify(hotkeys, null, 2)}</pre>
 		</div>
 	)
 }
