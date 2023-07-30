@@ -205,6 +205,7 @@ export const keyboards = {
 				position: { row: 3, column: 30, width: 3, height: 1 },
 			},
 			openQuotes: {
+				primary: { label: '$', hotkeyTargets: ['dollar'] },
 				secondary: { label: '"', hotkeyTargets: ['doubleQuotes'] },
 				quaternary: { label: 'ů' },
 				position: { row: 3, column: 33, width: 3, height: 1 },

@@ -130,6 +130,10 @@ export const hotkeyTargets = {
 		symbol: "'",
 		label: 'Apostrof',
 	},
+	dollar: {
+		symbol: '$',
+		label: 'Dolar',
+	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
 }>
