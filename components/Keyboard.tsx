@@ -91,7 +91,6 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 				{operatingSystems[operatingSystem]}{' '}
 				{languages[language].toLocaleLowerCase('cs')}
 			</Typography>
-			<Hotkeys hotkeys={hotkeys} />
 			<div className={styles.keyboard}>
 				{Object.entries(keys).map(([name, key]) => (
 					<div
@@ -140,6 +139,7 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 					</div>
 				))}
 			</div>
+			<Hotkeys hotkeys={hotkeys} />
 			{/* @TODO: remove <pre>{JSON.stringify(hotkeys, null, 2)}</pre> */}
 		</div>
 	)
