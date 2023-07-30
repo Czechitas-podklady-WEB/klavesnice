@@ -31,7 +31,7 @@ export const Hotkeys: FunctionComponent<HotkeysProps> = ({ hotkeys }) => {
 								padding: '0 0.2em',
 								minWidth: '1.5em',
 								textAlign: 'center',
-								backgroundColor: `var(--group-color-${group})`,
+								boxShadow: `inset 0 0 100rem var(--group-color-${group})`,
 							} /* @TODO: rewrite to CSS file */
 						}
 					>
