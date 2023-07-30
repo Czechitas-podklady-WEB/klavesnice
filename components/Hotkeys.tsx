@@ -21,9 +21,22 @@ export type HotkeysProps = {
 export const Hotkeys: FunctionComponent<HotkeysProps> = ({ hotkeys }) => {
 	return (
 		<Grid container columnSpacing={2} rowSpacing={1}>
-			{hotkeys.map(({ name, symbol, label, note }) => (
+			{hotkeys.map(({ name, symbol, label, note, group }) => (
 				<Grid item key={name} xs={6} sm={4} md={3} lg={2}>
-					{symbol}
+					<span
+						style={
+							{
+								display: 'inline-block',
+								borderRadius: '0.2em',
+								padding: '0 0.2em',
+								minWidth: '1.5em',
+								textAlign: 'center',
+								backgroundColor: `var(--group-color-${group})`,
+							} /* @TODO: rewrite to CSS file */
+						}
+					>
+						{symbol}
+					</span>
 					<br />
 					<ListItemText primary={label} secondary={note} />{' '}
 					{/* @TODO: improve style */}

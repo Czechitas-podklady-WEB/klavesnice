@@ -6,6 +6,7 @@ import {
 	operatingSystems,
 } from '../utilities/OperatingSystemAndLanguage'
 import { hotkeyTargets } from '../utilities/hotkeyTargets'
+import { isDefined } from '../utilities/isDefined'
 import type { Key } from '../utilities/keyboards'
 import { keyboards } from '../utilities/keyboards'
 import type { Hotkey } from './Hotkeys'
@@ -27,7 +28,13 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 	const keys = keyboards[operatingSystem][language]
 
 	const hotkeys = useMemo<Hotkey[]>(() => {
-		let x = 0
+		const keyPartBaseGroups = Object.values(keys)
+			.filter((key: Key) => key.isSpecial)
+			.flatMap((key: Key) =>
+				[key.primary, key.secondary, key.tertiary, key.quaternary]
+					.filter(isDefined)
+					.filter((part) => (part.hotkeyTargets?.length ?? 0) > 0),
+			)
 		return Object.entries(hotkeyTargets).map((entry) => {
 			const name = entry[0] as keyof typeof hotkeyTargets
 			const target = entry[1]
@@ -43,15 +50,15 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 					return hotkeyTargets?.includes(name)
 				}),
 			)
+			const groupIndex = keyPartBaseGroups.findIndex((baseGroup) =>
+				baseGroup.hotkeyTargets?.some((target) => target === name),
+			)
 			return {
 				name,
 				label: target.label,
 				note: 'note' in target ? target.note : undefined,
 				symbol: target.symbol,
-				group:
-					Object.keys(targetKeys).length === 1
-						? 'single'
-						: (x++ % 3) + 1 /* @TODO */,
+				group: groupIndex === -1 ? 'single' : groupIndex + 1,
 				keys: targetKeys,
 			}
 		})

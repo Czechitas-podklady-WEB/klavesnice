@@ -57,7 +57,7 @@ export const hotkeyTargets = {
 		label: 'Zpětné lomítko',
 	},
 	picker: {
-		symbol: '⌨️',
+		symbol: '…',
 		label: 'Vybírátko',
 		note: 'rozšířená klávesnice',
 	},

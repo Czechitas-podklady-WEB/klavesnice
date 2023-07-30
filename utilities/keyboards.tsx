@@ -145,6 +145,7 @@ export const keyboards = {
 			},
 			z: {
 				primary: { label: 'Z' },
+				quaternary: { label: 'Y' },
 				position: { row: 2, column: 20, width: 3, height: 1 },
 			},
 			u: {
@@ -252,7 +253,11 @@ export const keyboards = {
 						'forwardSlash',
 						'percentage',
 						'underscore',
+						'questionMark',
 						'exclamationMark',
+						'doubleQuotes',
+						'openingRoundBracket',
+						'singleQuote',
 					],
 				},
 				isSpecial: true,
@@ -260,11 +265,12 @@ export const keyboards = {
 			},
 			pipe: {
 				primary: { label: '|' },
-				secondary: { label: '\\' },
+				tertiary: { label: '\\' },
 				position: { row: 4, column: 5, width: 3, height: 1 },
 			},
 			y: {
 				primary: { label: 'Y' },
+				quaternary: { label: 'Z' },
 				position: { row: 4, column: 8, width: 3, height: 1 },
 			},
 			x: {
@@ -312,7 +318,7 @@ export const keyboards = {
 				primary: { label: '?' },
 				secondary: { label: '_', hotkeyTargets: ['underscore'] },
 				tertiary: { label: '*', hotkeyTargets: ['asterisk'] },
-				quaternary: { label: '-', hotkeyTargets: ['minus', 'asterisk'] },
+				quaternary: { label: '-', hotkeyTargets: ['minus'] },
 				position: { row: 4, column: 35, width: 3, height: 1 },
 			},
 			rightShift: {
@@ -355,6 +361,14 @@ export const keyboards = {
 						'tilde',
 						'caret',
 						'backtick',
+						'dollar',
+						'lowerThanBracket',
+						'greaterThanBracket',
+						'hash',
+						'openingCurlyBracket',
+						'closingCurlyBracket',
+						'openingSquareBracket',
+						'closingSquareBracket',
 					],
 				},
 				isSpecial: true,
