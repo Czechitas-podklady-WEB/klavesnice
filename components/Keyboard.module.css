@@ -38,19 +38,19 @@
 	opacity: 0.07;
 }
 
-.primary {
+.part.is_type_primary {
 	grid-area: 1 / 1;
 }
 
-.secondary {
+.part.is_type_secondary {
 	grid-area: 1 / 2;
 }
 
-.tertiary {
+.part.is_type_tertiary {
 	grid-area: 2 / 1;
 }
 
-.quaternary {
+.part.is_type_quaternary {
 	grid-area: 2 / 2;
 }
 
@@ -59,7 +59,7 @@
 	align-items: center;
 }
 
-.key.is_special .primary {
+.key.is_special .part.is_type_primary {
 	grid-row-end: span 2;
 	grid-column-end: span 2;
 	font-size: 1.2em;
@@ -83,15 +83,15 @@
 	background-color: var(--color);
 }
 
-.part.is_color_1 {
+.part.is_group_single {
+	--color: magenta;
+}
+.part.is_group_1 {
 	--color: red;
 }
-.part.is_color_2 {
+.part.is_group_2 {
 	--color: blue;
 }
-.part.is_color_3 {
+.part.is_group_3 {
 	--color: green;
-}
-.part.is_color_4 {
-	--color: magenta;
 }

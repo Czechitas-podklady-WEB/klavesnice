@@ -33,6 +33,10 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 					label: target.label,
 					note: 'note' in target ? target.note : undefined,
 					symbol: target.symbol,
+					group:
+						Math.random() < 0.2
+							? 'single'
+							: Math.ceil(Math.random() * 3) /* @TODO */,
 					keys: Object.fromEntries(
 						Object.entries(keys).filter((entry) => {
 							const key: Key = entry[1]
@@ -75,49 +79,47 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 						}
 					>
 						{'primary' in key && (
-							<span
-								className={clsx(styles.part, styles.primary, styles.is_color_1)}
-							>
-								{key.primary.label}
-							</span>
+							<Part label={key.primary.label} type="primary" group={1} />
 						)}
 						{'secondary' in key && (
-							<span
-								className={clsx(
-									styles.part,
-									styles.secondary,
-									styles.is_color_2,
-								)}
-							>
-								{key.secondary.label}
-							</span>
+							<Part label={key.secondary.label} type="secondary" group={2} />
 						)}
 						{'tertiary' in key && (
-							<span
-								className={clsx(
-									styles.part,
-									styles.tertiary,
-									styles.is_color_3,
-								)}
-							>
-								{key.tertiary.label}
-							</span>
+							<Part
+								label={key.tertiary.label}
+								type="tertiary"
+								group={undefined}
+							/>
 						)}
 						{'quaternary' in key && (
-							<span
-								className={clsx(
-									styles.part,
-									styles.quaternary,
-									styles.is_color_4,
-								)}
-							>
-								{key.quaternary.label}
-							</span>
+							<Part
+								label={key.quaternary.label}
+								type="quaternary"
+								group="single"
+							/>
 						)}
 					</div>
 				))}
 			</div>
 			<pre>{JSON.stringify(hotkeys, null, 2)}</pre>
 		</div>
+	)
+}
+
+const Part: FunctionComponent<{
+	label: string | JSX.Element
+	type: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
+	group: undefined | 'single' | number
+}> = ({ label, type, group }) => {
+	return (
+		<span
+			className={clsx(
+				styles.part,
+				styles[`is_type_${type}`],
+				group && styles[`is_group_${group}`],
+			)}
+		>
+			{label}
+		</span>
 	)
 }

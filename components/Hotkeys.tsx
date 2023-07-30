@@ -8,6 +8,7 @@ export type Hotkey = {
 	symbol: string
 	label: string
 	note: string | undefined
+	group: 'single' | number
 	keys: {
 		[name: string]: Key
 	}
