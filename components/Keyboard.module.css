@@ -84,16 +84,16 @@
 }
 
 .part.is_group_single {
-	--color: magenta;
+	--color: var(--group-color-single);
 }
 .part.is_group_1 {
-	--color: red;
+	--color: var(--group-color-1);
 }
 .part.is_group_2 {
-	--color: blue;
+	--color: var(--group-color-2);
 }
 .part.is_group_3 {
-	--color: green;
+	--color: var(--group-color-3);
 }
 
 .hotkeys {

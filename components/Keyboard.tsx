@@ -17,7 +17,8 @@ export interface KeyboardProps {
 	language: keyof typeof languages
 }
 
-type Type = 'primary' | 'secondary' | 'tertiary' | 'quaternary'
+const types = ['primary', 'secondary', 'tertiary', 'quaternary'] as const
+type Type = (typeof types)[number]
 
 export const Keyboard: FunctionComponent<KeyboardProps> = ({
 	operatingSystem,
@@ -25,36 +26,36 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 }) => {
 	const keys = keyboards[operatingSystem][language]
 
-	const hotkeys = useMemo<Hotkey[]>(
-		() =>
-			Object.entries(hotkeyTargets).map((entry) => {
-				const name = entry[0] as keyof typeof hotkeyTargets
-				const target = entry[1]
-				return {
-					name,
-					label: target.label,
-					note: 'note' in target ? target.note : undefined,
-					symbol: target.symbol,
-					group: 'single',
-					// Math.random() < 0.2
-					// 	? 'single'
-					// 	: Math.ceil(Math.random() * 3) /* @TODO */,
-					keys: Object.fromEntries(
-						Object.entries(keys).filter((entry) => {
-							const key: Key = entry[1]
-							const hotkeyTargets = [
-								...(key.primary?.hotkeyTargets ?? []),
-								...(key.secondary?.hotkeyTargets ?? []),
-								...(key.tertiary?.hotkeyTargets ?? []),
-								...(key.quaternary?.hotkeyTargets ?? []),
-							]
-							return hotkeyTargets?.includes(name)
-						}),
-					),
-				}
-			}),
-		[keys],
-	)
+	const hotkeys = useMemo<Hotkey[]>(() => {
+		let x = 0
+		return Object.entries(hotkeyTargets).map((entry) => {
+			const name = entry[0] as keyof typeof hotkeyTargets
+			const target = entry[1]
+			const targetKeys = Object.fromEntries(
+				Object.entries(keys).filter((entry) => {
+					const key: Key = entry[1]
+					const hotkeyTargets = [
+						...(key.primary?.hotkeyTargets ?? []),
+						...(key.secondary?.hotkeyTargets ?? []),
+						...(key.tertiary?.hotkeyTargets ?? []),
+						...(key.quaternary?.hotkeyTargets ?? []),
+					]
+					return hotkeyTargets?.includes(name)
+				}),
+			)
+			return {
+				name,
+				label: target.label,
+				note: 'note' in target ? target.note : undefined,
+				symbol: target.symbol,
+				group:
+					Object.keys(targetKeys).length === 1
+						? 'single'
+						: (x++ % 3) + 1 /* @TODO */,
+				keys: targetKeys,
+			}
+		})
+	}, [keys])
 
 	const keyGroups = useMemo<{
 		[name: string]: {
