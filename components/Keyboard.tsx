@@ -25,25 +25,28 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 
 	const hotkeys = useMemo<Hotkey[]>(
 		() =>
-			Object.entries(hotkeyTargets).map(([name, target]) => ({
-				name: name as keyof typeof hotkeyTargets,
-				label: target.label,
-				note: 'note' in target ? target.note : undefined,
-				symbol: target.symbol,
-				keys: Object.fromEntries(
-					Object.entries(keys).filter((entry) => {
-						const name = entry[0] as (typeof hotkeyTargets)[number]
-						const key: Key = entry[1]
-						const hotkeyTargets = [
-							...(key.primary?.hotkeyTargets ?? []),
-							...(key.secondary?.hotkeyTargets ?? []),
-							...(key.tertiary?.hotkeyTargets ?? []),
-							...(key.quaternary?.hotkeyTargets ?? []),
-						]
-						return hotkeyTargets?.includes(name)
-					}),
-				),
-			})),
+			Object.entries(hotkeyTargets).map((entry) => {
+				const name = entry[0] as keyof typeof hotkeyTargets
+				const target = entry[1]
+				return {
+					name,
+					label: target.label,
+					note: 'note' in target ? target.note : undefined,
+					symbol: target.symbol,
+					keys: Object.fromEntries(
+						Object.entries(keys).filter((entry) => {
+							const key: Key = entry[1]
+							const hotkeyTargets = [
+								...(key.primary?.hotkeyTargets ?? []),
+								...(key.secondary?.hotkeyTargets ?? []),
+								...(key.tertiary?.hotkeyTargets ?? []),
+								...(key.quaternary?.hotkeyTargets ?? []),
+							]
+							return hotkeyTargets?.includes(name)
+						}),
+					),
+				}
+			}),
 		[keys],
 	)
 
