@@ -33,6 +33,7 @@ export const keyboards = {
 			},
 			one: {
 				secondary: { label: '1' },
+				tertiary: { label: '~' },
 				quaternary: { label: '+', hotkeyTargets: ['plus'] },
 				position: { row: 1, column: 4, width: 3, height: 1 },
 			},
@@ -42,6 +43,7 @@ export const keyboards = {
 				position: { row: 1, column: 7, width: 3, height: 1 },
 			},
 			three: {
+				tertiary: { label: '^' },
 				secondary: { label: '3' },
 				quaternary: { label: 'š' },
 				position: { row: 1, column: 10, width: 3, height: 1 },
@@ -63,6 +65,7 @@ export const keyboards = {
 			},
 			seven: {
 				secondary: { label: '7' },
+				tertiary: { label: '`' },
 				quaternary: { label: 'ý' },
 				position: { row: 1, column: 22, width: 3, height: 1 },
 			},
