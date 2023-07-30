@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Icon } from '../components/Icon'
-import type { hotkeyTargets } from './hotkeyTargets'
 import type { OperatingSystemAndLanguage } from './OperatingSystemAndLanguage'
+import type { hotkeyTargets } from './hotkeyTargets'
 
 export type Position = {
 	row: number
@@ -235,7 +235,7 @@ export const keyboards = {
 				position: { row: 4, column: 14, width: 3, height: 1 },
 			},
 			v: {
-				primary: { label: 'V' },
+				primary: { label: 'V', hotkeyTargets: ['atSign'] },
 				position: { row: 4, column: 17, width: 3, height: 1 },
 			},
 			b: {
@@ -290,7 +290,7 @@ export const keyboards = {
 				position: { row: 5, column: 14, width: 20, height: 1 },
 			},
 			altGr: {
-				primary: { label: 'Alt Gr', hotkeyTargets: ['asterisk'] },
+				primary: { label: 'Alt Gr', hotkeyTargets: ['asterisk', 'atSign'] },
 				isSpecial: true,
 				position: { row: 5, column: 34, width: 4, height: 1 },
 			},

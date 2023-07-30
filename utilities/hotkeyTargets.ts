@@ -24,6 +24,10 @@ export const hotkeyTargets = {
 		symbol: '%',
 		label: 'Procento',
 	},
+	atSign: {
+		symbol: '@',
+		label: 'Zavináč',
+	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
 }>
