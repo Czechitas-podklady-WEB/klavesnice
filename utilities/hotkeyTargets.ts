@@ -51,6 +51,30 @@ export const hotkeyTargets = {
 		symbol: ';',
 		label: 'Středník',
 	},
+	openingRoundBracket: {
+		symbol: '(',
+		label: 'Otevírací kulatá závorka',
+	},
+	closingRoundBracket: {
+		symbol: ')',
+		label: 'Zavírací kulatá závorka',
+	},
+	openingSquareBracket: {
+		symbol: '[',
+		label: 'Otevírací hranatá závorka',
+	},
+	closingSquareBracket: {
+		symbol: ']',
+		label: 'Zavírací hranatá závorka',
+	},
+	openingCurlyBracket: {
+		symbol: '{',
+		label: 'Otevírací složená závorka',
+	},
+	closingCurlyBracket: {
+		symbol: '}',
+		label: 'Zavírací složená závorka',
+	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
 }>

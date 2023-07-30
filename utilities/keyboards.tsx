@@ -149,12 +149,13 @@ export const keyboards = {
 				position: { row: 2, column: 32, width: 3, height: 1 },
 			},
 			openBracket: {
-				quaternary: { label: 'ú', hotkeyTargets: ['forwardSlash'] },
+				secondary: { label: '/', hotkeyTargets: ['forwardSlash'] },
+				quaternary: { label: 'ú' },
 				position: { row: 2, column: 35, width: 3, height: 1 },
 			},
 			closeBracket: {
-				secondary: { label: '(' },
-				quaternary: { label: ')' },
+				secondary: { label: '(', hotkeyTargets: ['openingRoundBracket'] },
+				quaternary: { label: ')', hotkeyTargets: ['closingRoundBracket'] },
 				position: { row: 2, column: 38, width: 3, height: 1 },
 			},
 			enter: {
@@ -181,10 +182,12 @@ export const keyboards = {
 			},
 			f: {
 				primary: { label: 'F' },
+				quaternary: { label: '[', hotkeyTargets: ['openingSquareBracket'] },
 				position: { row: 3, column: 15, width: 3, height: 1 },
 			},
 			g: {
 				primary: { label: 'G' },
+				quaternary: { label: ']', hotkeyTargets: ['closingSquareBracket'] },
 				position: { row: 3, column: 18, width: 3, height: 1 },
 			},
 			h: {
@@ -237,19 +240,23 @@ export const keyboards = {
 				position: { row: 4, column: 11, width: 3, height: 1 },
 			},
 			c: {
-				primary: { label: 'C', hotkeyTargets: ['ampersand'] },
+				primary: { label: 'C' },
+				quaternary: { label: '&', hotkeyTargets: ['ampersand'] },
 				position: { row: 4, column: 14, width: 3, height: 1 },
 			},
 			v: {
-				primary: { label: 'V', hotkeyTargets: ['atSign'] },
+				primary: { label: 'V' },
+				quaternary: { label: '@', hotkeyTargets: ['atSign'] },
 				position: { row: 4, column: 17, width: 3, height: 1 },
 			},
 			b: {
 				primary: { label: 'B' },
+				quaternary: { label: '{', hotkeyTargets: ['openingCurlyBracket'] },
 				position: { row: 4, column: 20, width: 3, height: 1 },
 			},
 			n: {
 				primary: { label: 'N' },
+				quaternary: { label: '}', hotkeyTargets: ['closingCurlyBracket'] },
 				position: { row: 4, column: 23, width: 3, height: 1 },
 			},
 			m: {
@@ -336,7 +343,19 @@ export const keyboards = {
 		},
 	},
 	mac: {
-		cs: {},
-		en_us: {},
+		cs: {
+			belowEscape: {
+				primary: { label: '~' },
+				tertiary: { label: '`' },
+				position: { row: 1, column: 1, width: 3, height: 1 },
+			},
+		},
+		en_us: {
+			belowEscape: {
+				primary: { label: '~' },
+				tertiary: { label: '`' },
+				position: { row: 1, column: 1, width: 3, height: 1 },
+			},
+		},
 	},
 } satisfies Readonly<OperatingSystemAndLanguage<{ [name: string]: Key }>>
