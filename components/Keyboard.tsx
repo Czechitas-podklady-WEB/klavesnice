@@ -17,6 +17,8 @@ export interface KeyboardProps {
 	language: keyof typeof languages
 }
 
+type Type = 'primary' | 'secondary' | 'tertiary' | 'quaternary'
+
 export const Keyboard: FunctionComponent<KeyboardProps> = ({
 	operatingSystem,
 	language,
@@ -33,10 +35,10 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 					label: target.label,
 					note: 'note' in target ? target.note : undefined,
 					symbol: target.symbol,
-					group:
-						Math.random() < 0.2
-							? 'single'
-							: Math.ceil(Math.random() * 3) /* @TODO */,
+					group: 'single',
+					// Math.random() < 0.2
+					// 	? 'single'
+					// 	: Math.ceil(Math.random() * 3) /* @TODO */,
 					keys: Object.fromEntries(
 						Object.entries(keys).filter((entry) => {
 							const key: Key = entry[1]
@@ -53,6 +55,35 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 			}),
 		[keys],
 	)
+
+	const keyGroups = useMemo<{
+		[name: string]: {
+			[type in Type]: Array<'single' | number>
+		}
+	}>(() => {
+		return Object.fromEntries(
+			Object.entries(keys).map((entry) => {
+				const name = entry[0]
+				const key = entry[1] as Key
+				const findGroups = (type: Type) => {
+					const hotkeyTargets = key[type]?.hotkeyTargets ?? []
+					const groups = hotkeys
+						.filter((hotkey) => hotkeyTargets.includes(hotkey.name))
+						.map((hotkey) => hotkey.group)
+					return groups
+				}
+				return [
+					name,
+					{
+						primary: findGroups('primary'),
+						secondary: findGroups('secondary'),
+						tertiary: findGroups('tertiary'),
+						quaternary: findGroups('quaternary'),
+					},
+				]
+			}),
+		)
+	}, [hotkeys, keys])
 
 	return (
 		<div className={styles.wrapper}>
@@ -79,44 +110,52 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 						}
 					>
 						{'primary' in key && (
-							<Part label={key.primary.label} type="primary" group={1} />
+							<Part
+								label={key.primary.label}
+								type="primary"
+								groups={keyGroups[name]['primary']}
+							/>
 						)}
 						{'secondary' in key && (
-							<Part label={key.secondary.label} type="secondary" group={2} />
+							<Part
+								label={key.secondary.label}
+								type="secondary"
+								groups={keyGroups[name]['secondary']}
+							/>
 						)}
 						{'tertiary' in key && (
 							<Part
 								label={key.tertiary.label}
 								type="tertiary"
-								group={undefined}
+								groups={keyGroups[name]['tertiary']}
 							/>
 						)}
 						{'quaternary' in key && (
 							<Part
 								label={key.quaternary.label}
 								type="quaternary"
-								group="single"
+								groups={keyGroups[name]['quaternary']}
 							/>
 						)}
 					</div>
 				))}
 			</div>
-			<pre>{JSON.stringify(hotkeys, null, 2)}</pre>
+			{/* @TODO: remove <pre>{JSON.stringify(hotkeys, null, 2)}</pre> */}
 		</div>
 	)
 }
 
 const Part: FunctionComponent<{
 	label: string | JSX.Element
-	type: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
-	group: undefined | 'single' | number
-}> = ({ label, type, group }) => {
+	type: Type
+	groups: Array<'single' | number>
+}> = ({ label, type, groups }) => {
 	return (
 		<span
 			className={clsx(
 				styles.part,
 				styles[`is_type_${type}`],
-				group && styles[`is_group_${group}`],
+				groups.map((group) => styles[`is_group_${group}`]),
 			)}
 		>
 			{label}

@@ -8,19 +8,22 @@ export const hotkeyTargets = {
 	plus: {
 		symbol: '+',
 		label: 'Plus',
+		note: 'sčítání',
 	},
 	minus: {
 		symbol: '-',
 		label: 'Minus',
+		note: 'odčítání',
 	},
 	asterisk: {
 		symbol: '*',
 		label: 'Hvězdička',
-		note: 'Krát',
+		note: 'krát',
 	},
 	percentage: {
 		symbol: '%',
 		label: 'Procento',
+		note: 'modulo',
 	},
 	atSign: {
 		symbol: '@',
@@ -33,11 +36,12 @@ export const hotkeyTargets = {
 	pipe: {
 		symbol: '|',
 		label: 'Svislá čára',
+		note: 'roura',
 	},
 	forwardSlash: {
 		symbol: '/',
 		label: 'Lomítko',
-		note: 'Děleno',
+		note: 'děleno',
 	},
 	backwardSlash: {
 		symbol: '\\',
@@ -46,6 +50,7 @@ export const hotkeyTargets = {
 	picker: {
 		symbol: '⌨️',
 		label: 'Vybírátko',
+		note: 'rozšířená klávesnice',
 	},
 	semicolon: {
 		symbol: ';',
@@ -53,27 +58,33 @@ export const hotkeyTargets = {
 	},
 	openingRoundBracket: {
 		symbol: '(',
-		label: 'Otevírací kulatá závorka',
+		label: 'Závorka',
+		note: 'Otevírací kulatá',
 	},
 	closingRoundBracket: {
 		symbol: ')',
-		label: 'Zavírací kulatá závorka',
+		label: 'Závorka',
+		note: 'Zavírací kulatá',
 	},
 	openingSquareBracket: {
 		symbol: '[',
-		label: 'Otevírací hranatá závorka',
+		label: 'Závorka',
+		note: 'Otevírací hranatá',
 	},
 	closingSquareBracket: {
 		symbol: ']',
-		label: 'Zavírací hranatá závorka',
+		label: 'Závorka',
+		note: 'Zavírací hranatá',
 	},
 	openingCurlyBracket: {
 		symbol: '{',
-		label: 'Otevírací složená závorka',
+		label: 'Závorka',
+		note: 'Otevírací složená',
 	},
 	closingCurlyBracket: {
 		symbol: '}',
-		label: 'Zavírací složená závorka',
+		label: 'Závorka',
+		note: 'Zavírací složená',
 	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
