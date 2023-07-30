@@ -28,6 +28,7 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 			Object.entries(hotkeyTargets).map(([name, target]) => ({
 				name: name as keyof typeof hotkeyTargets,
 				label: target.label,
+				note: 'note' in target ? target.note : undefined,
 				symbol: target.symbol,
 				keys: Object.fromEntries(
 					Object.entries(keys).filter((entry) => {

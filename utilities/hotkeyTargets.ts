@@ -1,6 +1,7 @@
 export type HotkeyTarget = {
 	symbol: string
 	label: string
+	note?: string
 }
 
 export const hotkeyTargets = {
@@ -15,10 +16,7 @@ export const hotkeyTargets = {
 	asterisk: {
 		symbol: '*',
 		label: 'Hvězdička',
-	},
-	slash: {
-		symbol: '/',
-		label: 'Lomítko',
+		note: 'Krát',
 	},
 	percentage: {
 		symbol: '%',
@@ -27,6 +25,31 @@ export const hotkeyTargets = {
 	atSign: {
 		symbol: '@',
 		label: 'Zavináč',
+	},
+	ampersand: {
+		symbol: '&',
+		label: 'Ampersand',
+	},
+	pipe: {
+		symbol: '|',
+		label: 'Svislá čára',
+	},
+	forwardSlash: {
+		symbol: '/',
+		label: 'Lomítko',
+		note: 'Děleno',
+	},
+	backwardSlash: {
+		symbol: '\\',
+		label: 'Zpětné lomítko',
+	},
+	picker: {
+		symbol: '⌨️',
+		label: 'Vybírátko',
+	},
+	semicolon: {
+		symbol: ';',
+		label: 'Středník',
 	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget

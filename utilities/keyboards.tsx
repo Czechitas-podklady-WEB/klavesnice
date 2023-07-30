@@ -28,7 +28,7 @@ export const keyboards = {
 	windows: {
 		cs: {
 			belowEscape: {
-				quaternary: { label: ';' },
+				quaternary: { label: ';', hotkeyTargets: ['semicolon'] },
 				position: { row: 1, column: 1, width: 3, height: 1 },
 			},
 			one: {
@@ -101,12 +101,12 @@ export const keyboards = {
 				position: { row: 2, column: 1, width: 4, height: 1 },
 			},
 			q: {
-				primary: { label: 'Q' },
+				primary: { label: 'Q', hotkeyTargets: ['backwardSlash'] },
 				secondary: { label: '\\' },
 				position: { row: 2, column: 5, width: 3, height: 1 },
 			},
 			w: {
-				primary: { label: 'W' },
+				primary: { label: 'W', hotkeyTargets: ['pipe'] },
 				secondary: { label: '|' },
 				position: { row: 2, column: 8, width: 3, height: 1 },
 			},
@@ -146,7 +146,7 @@ export const keyboards = {
 				position: { row: 2, column: 32, width: 3, height: 1 },
 			},
 			openBracket: {
-				quaternary: { label: 'ú', hotkeyTargets: ['slash'] },
+				quaternary: { label: 'ú', hotkeyTargets: ['forwardSlash'] },
 				position: { row: 2, column: 35, width: 3, height: 1 },
 			},
 			closeBracket: {
@@ -213,7 +213,10 @@ export const keyboards = {
 				position: { row: 2, column: 41, width: 5, height: 1 },
 			},
 			leftShift: {
-				primary: { label: 'Shift', hotkeyTargets: ['slash', 'percentage'] },
+				primary: {
+					label: 'Shift',
+					hotkeyTargets: ['forwardSlash', 'percentage'],
+				},
 				isSpecial: true,
 				position: { row: 4, column: 1, width: 4, height: 1 },
 			},
@@ -231,7 +234,7 @@ export const keyboards = {
 				position: { row: 4, column: 11, width: 3, height: 1 },
 			},
 			c: {
-				primary: { label: 'C' },
+				primary: { label: 'C', hotkeyTargets: ['ampersand'] },
 				position: { row: 4, column: 14, width: 3, height: 1 },
 			},
 			v: {
@@ -255,7 +258,7 @@ export const keyboards = {
 				position: { row: 4, column: 29, width: 3, height: 1 },
 			},
 			stop: {
-				tertiary: { label: '.' },
+				tertiary: { label: '.', hotkeyTargets: ['picker'] },
 				position: { row: 4, column: 32, width: 3, height: 1 },
 			},
 			minus: {
@@ -275,7 +278,10 @@ export const keyboards = {
 				position: { row: 5, column: 1, width: 5, height: 1 },
 			},
 			system: {
-				primary: { label: <Icon name="windowsLogo" /> },
+				primary: {
+					label: <Icon name="windowsLogo" />,
+					hotkeyTargets: ['picker'],
+				},
 				isSpecial: true,
 				position: { row: 5, column: 6, width: 4, height: 1 },
 			},
@@ -290,7 +296,16 @@ export const keyboards = {
 				position: { row: 5, column: 14, width: 20, height: 1 },
 			},
 			altGr: {
-				primary: { label: 'Alt Gr', hotkeyTargets: ['asterisk', 'atSign'] },
+				primary: {
+					label: 'Alt Gr',
+					hotkeyTargets: [
+						'asterisk',
+						'atSign',
+						'ampersand',
+						'backwardSlash',
+						'pipe',
+					],
+				},
 				isSpecial: true,
 				position: { row: 5, column: 34, width: 4, height: 1 },
 			},

@@ -7,6 +7,7 @@ export type Hotkey = {
 	name: keyof typeof hotkeyTargets
 	symbol: string
 	label: string
+	note: string | undefined
 	keys: {
 		[name: string]: Key
 	}
@@ -19,10 +20,10 @@ export type HotkeysProps = {
 export const Hotkeys: FunctionComponent<HotkeysProps> = ({ hotkeys }) => {
 	return (
 		<List dense>
-			{hotkeys.map(({ name, symbol, label }) => (
+			{hotkeys.map(({ name, symbol, label, note }) => (
 				<ListItem key={name}>
 					<ListItemAvatar>{symbol}</ListItemAvatar>
-					<ListItemText primary={label} />
+					<ListItemText primary={label} secondary={note} />
 				</ListItem>
 			))}
 		</List>
