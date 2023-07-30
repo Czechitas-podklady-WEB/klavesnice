@@ -254,10 +254,14 @@ export const keyboards = {
 				position: { row: 4, column: 26, width: 3, height: 1 },
 			},
 			comma: {
+				primary: { label: '<' },
+				secondary: { label: '?' },
 				tertiary: { label: ',' },
 				position: { row: 4, column: 29, width: 3, height: 1 },
 			},
 			stop: {
+				primary: { label: '>' },
+				secondary: { label: ':' },
 				tertiary: { label: '.', hotkeyTargets: ['picker'] },
 				position: { row: 4, column: 32, width: 3, height: 1 },
 			},
