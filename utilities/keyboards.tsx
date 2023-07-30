@@ -33,7 +33,7 @@ export const keyboards = {
 			},
 			one: {
 				secondary: { label: '1' },
-				tertiary: { label: '~' },
+				tertiary: { label: '~', hotkeyTargets: ['tilde'] },
 				quaternary: { label: '+', hotkeyTargets: ['plus'] },
 				position: { row: 1, column: 4, width: 3, height: 1 },
 			},
@@ -43,8 +43,8 @@ export const keyboards = {
 				position: { row: 1, column: 7, width: 3, height: 1 },
 			},
 			three: {
-				tertiary: { label: '^' },
 				secondary: { label: '3' },
+				tertiary: { label: '^', hotkeyTargets: ['caret'] },
 				quaternary: { label: 'š' },
 				position: { row: 1, column: 10, width: 3, height: 1 },
 			},
@@ -65,7 +65,7 @@ export const keyboards = {
 			},
 			seven: {
 				secondary: { label: '7' },
-				tertiary: { label: '`' },
+				tertiary: { label: '`', hotkeyTargets: ['backtick'] },
 				quaternary: { label: 'ý' },
 				position: { row: 1, column: 22, width: 3, height: 1 },
 			},
@@ -86,7 +86,7 @@ export const keyboards = {
 			},
 			equal: {
 				secondary: { label: '%', hotkeyTargets: ['percentage'] },
-				quaternary: { label: '=' },
+				quaternary: { label: '=', hotkeyTargets: ['equals'] },
 				position: { row: 1, column: 34, width: 3, height: 1 },
 			},
 			punctuation: {
@@ -207,6 +207,7 @@ export const keyboards = {
 				position: { row: 3, column: 30, width: 3, height: 1 },
 			},
 			openQuotes: {
+				secondary: { label: '"', hotkeyTargets: ['doubleQuotes'] },
 				quaternary: { label: 'ů' },
 				position: { row: 3, column: 33, width: 3, height: 1 },
 			},
@@ -215,13 +216,15 @@ export const keyboards = {
 				position: { row: 3, column: 36, width: 3, height: 1 },
 			},
 			apostrophe: {
-				secondary: { label: "'" },
+				primary: { label: '|' },
+				secondary: { label: "'", hotkeyTargets: ['singleQuote'] },
+				tertiary: { label: '\\' },
 				position: { row: 2, column: 41, width: 5, height: 1 },
 			},
 			leftShift: {
 				primary: {
 					label: 'Shift',
-					hotkeyTargets: ['forwardSlash', 'percentage'],
+					hotkeyTargets: ['forwardSlash', 'percentage', 'underscore'],
 				},
 				isSpecial: true,
 				position: { row: 4, column: 1, width: 4, height: 1 },
@@ -264,20 +267,21 @@ export const keyboards = {
 				position: { row: 4, column: 26, width: 3, height: 1 },
 			},
 			comma: {
-				primary: { label: '<' },
-				secondary: { label: '?' },
+				primary: { label: '<', hotkeyTargets: ['lowerThanBracket'] },
+				secondary: { label: '?', hotkeyTargets: ['questionMark'] },
 				tertiary: { label: ',' },
 				position: { row: 4, column: 29, width: 3, height: 1 },
 			},
 			stop: {
-				primary: { label: '>' },
+				primary: { label: '>', hotkeyTargets: ['greaterThanBracket'] },
 				secondary: { label: ':' },
 				tertiary: { label: '.', hotkeyTargets: ['picker'] },
 				position: { row: 4, column: 32, width: 3, height: 1 },
 			},
 			minus: {
-				tertiary: { label: '*' },
-				secondary: { label: '_' },
+				primary: { label: '?' },
+				secondary: { label: '_', hotkeyTargets: ['underscore'] },
+				tertiary: { label: '*', hotkeyTargets: ['asterisk'] },
 				quaternary: { label: '-', hotkeyTargets: ['minus', 'asterisk'] },
 				position: { row: 4, column: 35, width: 3, height: 1 },
 			},
@@ -318,6 +322,9 @@ export const keyboards = {
 						'ampersand',
 						'backwardSlash',
 						'pipe',
+						'tilde',
+						'caret',
+						'backtick',
 					],
 				},
 				isSpecial: true,

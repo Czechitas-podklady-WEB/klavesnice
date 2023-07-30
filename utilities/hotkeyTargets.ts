@@ -25,6 +25,11 @@ export const hotkeyTargets = {
 		label: 'Procento',
 		note: 'modulo',
 	},
+	equals: {
+		symbol: '=',
+		label: 'Rovnítko',
+		note: 'rovnost, přiřazení',
+	},
 	atSign: {
 		symbol: '@',
 		label: 'Zavináč',
@@ -85,6 +90,45 @@ export const hotkeyTargets = {
 		symbol: '}',
 		label: 'Závorka',
 		note: 'Zavírací složená',
+	},
+	lowerThanBracket: {
+		symbol: '<',
+		label: 'Závorka',
+		note: 'je menší než',
+	},
+	greaterThanBracket: {
+		symbol: '>',
+		label: 'Závorka',
+		note: 'je větší než',
+	},
+	tilde: {
+		symbol: '~',
+		label: 'Vlnovka',
+	},
+	caret: {
+		symbol: '^',
+		label: 'Stříška',
+	},
+	backtick: {
+		symbol: '`',
+		label: 'Zpětný apostrof',
+	},
+	underscore: {
+		symbol: '_',
+		label: 'Podtržítko',
+	},
+	questionMark: {
+		symbol: '?',
+		label: 'Otazník',
+	},
+	doubleQuotes: {
+		symbol: '"',
+		label: 'Uvozovky',
+		note: 'dvojité',
+	},
+	singleQuote: {
+		symbol: "'",
+		label: 'Apostrof',
 	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
