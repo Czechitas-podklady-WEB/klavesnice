@@ -95,3 +95,7 @@
 .part.is_group_3 {
 	--color: green;
 }
+
+.hotkeys {
+	margin-top: 1em;
+}

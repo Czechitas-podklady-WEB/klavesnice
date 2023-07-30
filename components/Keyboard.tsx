@@ -139,7 +139,9 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 					</div>
 				))}
 			</div>
-			<Hotkeys hotkeys={hotkeys} />
+			<div className={styles.hotkeys}>
+				<Hotkeys hotkeys={hotkeys} />
+			</div>
 			{/* @TODO: remove <pre>{JSON.stringify(hotkeys, null, 2)}</pre> */}
 		</div>
 	)

@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
+import { Grid, ListItemText } from '@mui/material'
 import type { FunctionComponent } from 'react'
 import type { hotkeyTargets } from '../utilities/hotkeyTargets'
 import type { Key } from '../utilities/keyboards'
@@ -20,13 +20,15 @@ export type HotkeysProps = {
 
 export const Hotkeys: FunctionComponent<HotkeysProps> = ({ hotkeys }) => {
 	return (
-		<List dense>
+		<Grid container columnSpacing={2} rowSpacing={1}>
 			{hotkeys.map(({ name, symbol, label, note }) => (
-				<ListItem key={name}>
-					<ListItemAvatar>{symbol}</ListItemAvatar>
-					<ListItemText primary={label} secondary={note} />
-				</ListItem>
+				<Grid item key={name} xs={6} sm={4} md={3} lg={2}>
+					{symbol}
+					<br />
+					<ListItemText primary={label} secondary={note} />{' '}
+					{/* @TODO: improve style */}
+				</Grid>
 			))}
-		</List>
+		</Grid>
 	)
 }
