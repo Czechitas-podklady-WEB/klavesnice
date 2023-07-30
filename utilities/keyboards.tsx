@@ -104,13 +104,13 @@ export const keyboards = {
 				position: { row: 2, column: 1, width: 4, height: 1 },
 			},
 			q: {
-				primary: { label: 'Q', hotkeyTargets: ['backwardSlash'] },
-				secondary: { label: '\\' },
+				primary: { label: 'Q' },
+				secondary: { label: '\\', hotkeyTargets: ['backwardSlash'] },
 				position: { row: 2, column: 5, width: 3, height: 1 },
 			},
 			w: {
-				primary: { label: 'W', hotkeyTargets: ['pipe'] },
-				secondary: { label: '|' },
+				primary: { label: 'W' },
+				secondary: { label: '|', hotkeyTargets: ['pipe'] },
 				position: { row: 2, column: 8, width: 3, height: 1 },
 			},
 			e: {
@@ -120,12 +120,10 @@ export const keyboards = {
 			},
 			r: {
 				primary: { label: 'R' },
-				secondary: { label: '|' },
 				position: { row: 2, column: 14, width: 3, height: 1 },
 			},
 			t: {
 				primary: { label: 'T' },
-				secondary: { label: '|' },
 				position: { row: 2, column: 17, width: 3, height: 1 },
 			},
 			z: {
