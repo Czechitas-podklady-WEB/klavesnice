@@ -28,69 +28,86 @@ export const keyboards = {
 	windows: {
 		cs: {
 			belowEscape: {
+				primary: { label: '~' },
+				secondary: { label: '°' },
+				tertiary: { label: '`' },
 				quaternary: { label: ';', hotkeyTargets: ['semicolon'] },
 				position: { row: 1, column: 1, width: 3, height: 1 },
 			},
 			one: {
+				primary: { label: '!' },
 				secondary: { label: '1' },
 				tertiary: { label: '~', hotkeyTargets: ['tilde'] },
 				quaternary: { label: '+', hotkeyTargets: ['plus'] },
 				position: { row: 1, column: 4, width: 3, height: 1 },
 			},
 			two: {
+				primary: { label: '@' },
 				secondary: { label: '2' },
 				quaternary: { label: 'ě' },
 				position: { row: 1, column: 7, width: 3, height: 1 },
 			},
 			three: {
+				primary: { label: '#' },
 				secondary: { label: '3' },
 				tertiary: { label: '^', hotkeyTargets: ['caret'] },
 				quaternary: { label: 'š' },
 				position: { row: 1, column: 10, width: 3, height: 1 },
 			},
 			four: {
+				primary: { label: '$' },
 				secondary: { label: '4' },
 				quaternary: { label: 'č' },
 				position: { row: 1, column: 13, width: 3, height: 1 },
 			},
 			five: {
+				primary: { label: '%' },
 				secondary: { label: '5' },
 				quaternary: { label: 'ř' },
 				position: { row: 1, column: 16, width: 3, height: 1 },
 			},
 			six: {
+				primary: { label: '^' },
 				secondary: { label: '6' },
 				quaternary: { label: 'ž' },
 				position: { row: 1, column: 19, width: 3, height: 1 },
 			},
 			seven: {
+				primary: { label: '&' },
 				secondary: { label: '7' },
 				tertiary: { label: '`', hotkeyTargets: ['backtick'] },
 				quaternary: { label: 'ý' },
 				position: { row: 1, column: 22, width: 3, height: 1 },
 			},
 			eight: {
+				primary: { label: '*' },
 				secondary: { label: '8' },
 				quaternary: { label: 'á' },
 				position: { row: 1, column: 25, width: 3, height: 1 },
 			},
 			nine: {
+				primary: { label: '(' },
 				secondary: { label: '9' },
 				quaternary: { label: 'í' },
 				position: { row: 1, column: 28, width: 3, height: 1 },
 			},
 			zero: {
+				primary: { label: ')' },
 				secondary: { label: '0' },
 				quaternary: { label: 'é' },
 				position: { row: 1, column: 31, width: 3, height: 1 },
 			},
 			equal: {
 				secondary: { label: '%', hotkeyTargets: ['percentage'] },
+				tertiary: { label: '_' },
 				quaternary: { label: '=', hotkeyTargets: ['equals'] },
 				position: { row: 1, column: 34, width: 3, height: 1 },
 			},
 			punctuation: {
 				primary: { label: '+' },
+				secondary: { label: 'ˇ' },
+				tertiary: { label: '=' },
+				quaternary: { label: '´' },
 				position: { row: 1, column: 37, width: 3, height: 1 },
 			},
 			backspace: {
@@ -147,12 +164,16 @@ export const keyboards = {
 				position: { row: 2, column: 32, width: 3, height: 1 },
 			},
 			openBracket: {
+				primary: { label: '{' },
 				secondary: { label: '/', hotkeyTargets: ['forwardSlash'] },
+				tertiary: { label: '[' },
 				quaternary: { label: 'ú' },
 				position: { row: 2, column: 35, width: 3, height: 1 },
 			},
 			closeBracket: {
+				primary: { label: '}' },
 				secondary: { label: '(', hotkeyTargets: ['openingRoundBracket'] },
+				tertiary: { label: ']' },
 				quaternary: { label: ')', hotkeyTargets: ['closingRoundBracket'] },
 				position: { row: 2, column: 38, width: 3, height: 1 },
 			},
@@ -207,11 +228,14 @@ export const keyboards = {
 			openQuotes: {
 				primary: { label: '$', hotkeyTargets: ['dollar'] },
 				secondary: { label: '"', hotkeyTargets: ['doubleQuotes'] },
+				tertiary: { label: ';' },
 				quaternary: { label: 'ů' },
 				position: { row: 3, column: 33, width: 3, height: 1 },
 			},
 			closeQuotes: {
+				primary: { label: '"' },
 				secondary: { label: '!', hotkeyTargets: ['exclamationMark'] },
+				tertiary: { label: "'" },
 				quaternary: { label: '§' },
 				position: { row: 3, column: 36, width: 3, height: 1 },
 			},
@@ -245,6 +269,7 @@ export const keyboards = {
 			},
 			x: {
 				primary: { label: 'X' },
+				quaternary: { label: '#', hotkeyTargets: ['hash'] },
 				position: { row: 4, column: 11, width: 3, height: 1 },
 			},
 			c: {

@@ -30,6 +30,10 @@ export const hotkeyTargets = {
 		label: 'Rovnítko',
 		note: 'rovnost, přiřazení',
 	},
+	hash: {
+		symbol: '#',
+		label: 'Mřížka',
+	},
 	atSign: {
 		symbol: '@',
 		label: 'Zavináč',
