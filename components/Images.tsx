@@ -3,9 +3,10 @@ import type { FunctionComponent } from 'react'
 import mac from '../images/mac.png'
 import windows from '../images/windows.png'
 
+// @TODO: remove images - debug only
 export const Images: FunctionComponent = () => {
 	return (
-		<div>
+		<div style={{ marginTop: '100vh' }}>
 			<Image
 				src={windows.src}
 				width={windows.width}
