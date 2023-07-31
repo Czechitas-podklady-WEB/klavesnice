@@ -1,5 +1,7 @@
 # Jak na klávesnici
 
+![](public/icon.svg)
+
 Adresa: [klavesnice.czechitas-podklady.cz](https://klavesnice.czechitas-podklady.cz)
 
 ## Vývoj
