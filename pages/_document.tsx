@@ -6,6 +6,7 @@ export default function Document() {
 			<Head>
 				<meta name="color-scheme" content="light dark" />
 				<link rel="shortcut icon" href="icon.svg" />
+				<link rel="manifest" href="/app.webmanifest" />
 				<meta
 					name="theme-color"
 					media="(prefers-color-scheme: light)"

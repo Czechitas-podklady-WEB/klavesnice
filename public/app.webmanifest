@@ -1,0 +1,23 @@
+{
+	"name": "Klávesnice",
+	"short_name": "Klávesnice",
+	"description": "Seznam speciálních znaků na klávesnici s návodem, jak je napsat.",
+	"start_url": "/",
+	"display": "standalone",
+	"theme_color": "#1d74a7",
+	"background_color": "#000000",
+	"icons": [
+		{
+			"src": "/icon.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/icon.maskable.svg",
+			"sizes": "100x100",
+			"type": "image/svg",
+			"purpose": "maskable"
+		}
+	]
+}
