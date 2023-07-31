@@ -1,7 +1,9 @@
-import { Grid, ListItemText } from '@mui/material'
+import { Grid } from '@mui/material'
+import clsx from 'clsx'
 import type { FunctionComponent } from 'react'
 import type { hotkeyTargets } from '../utilities/hotkeyTargets'
 import type { Key } from '../utilities/keyboards'
+import styles from './Hotkeys.module.css'
 
 export type Hotkey = {
 	name: keyof typeof hotkeyTargets
@@ -23,23 +25,15 @@ export const Hotkeys: FunctionComponent<HotkeysProps> = ({ hotkeys }) => {
 		<Grid container columnSpacing={2} rowSpacing={1}>
 			{hotkeys.map(({ name, symbol, label, note, group }) => (
 				<Grid item key={name} xs={6} sm={4} md={3} lg={2}>
-					<span
-						style={
-							{
-								display: 'inline-block',
-								borderRadius: '0.2em',
-								padding: '0 0.2em',
-								minWidth: '1.5em',
-								textAlign: 'center',
-								boxShadow: `inset 0 0 100rem var(--group-color-${group})`,
-							} /* @TODO: rewrite to CSS file */
-						}
-					>
-						{symbol}
-					</span>
-					<br />
-					<ListItemText primary={label} secondary={note} />{' '}
-					{/* @TODO: improve style */}
+					<div className={styles.item}>
+						<div className={clsx(styles.symbol, styles[`is_group_${group}`])}>
+							{symbol}
+						</div>
+						<div className={styles.text}>
+							<div className={styles.label}>{label}</div>
+							{note && <div className={styles.note}>{note}</div>}
+						</div>
+					</div>
 				</Grid>
 			))}
 		</Grid>
