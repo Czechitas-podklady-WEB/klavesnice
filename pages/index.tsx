@@ -81,24 +81,25 @@ export default function Index() {
 						</Select>
 					</FormControl>
 				</Grid>
-				{(
-					Object.keys(operatingSystems) as (keyof typeof operatingSystems)[]
-				).map((operatingSystem) =>
-					(Object.keys(languages) as (keyof typeof languages)[]).map(
-						(language) =>
-							(selectedOperatingSystem === allValue ||
-								selectedOperatingSystem === operatingSystem) &&
-							(selectedLanguage === allValue ||
-								selectedLanguage === language) && (
-								<Grid item xs={12} key={`${operatingSystem}_${language}`}>
+				<Grid item xs={12}>
+					{(
+						Object.keys(operatingSystems) as (keyof typeof operatingSystems)[]
+					).map((operatingSystem) =>
+						(Object.keys(languages) as (keyof typeof languages)[]).map(
+							(language) =>
+								(selectedOperatingSystem === allValue ||
+									selectedOperatingSystem === operatingSystem) &&
+								(selectedLanguage === allValue ||
+									selectedLanguage === language) && (
 									<Keyboard
+										key={`${operatingSystem}_${language}`}
 										operatingSystem={operatingSystem}
 										language={language}
 									/>
-								</Grid>
-							),
-					),
-				)}
+								),
+						),
+					)}
+				</Grid>
 				<Grid item xs={12} className={hideInPrintClass}>
 					<Typography align="right">
 						<Button
