@@ -177,7 +177,7 @@ export const relatedHotkeyTargetGroups: ReadonlyArray<RelatedHotkeyTargetGroup> 
 			},
 			{
 				name: 'Uvozovky',
-				targets: ['doubleQuotes', 'singleQuote'],
+				targets: ['doubleQuotes', 'singleQuote', 'backtick'],
 			},
 		]
 
