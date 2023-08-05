@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react'
 import { useMemo, type FunctionComponent } from 'react'
 import type { hotkeyTargets } from '../utilities/hotkeyTargets'
 import { relatedHotkeyTargetGroups } from '../utilities/hotkeyTargets'
-import type { Key } from '../utilities/keyboards'
+import type { Key } from '../utilities/keyboards/Key'
 import styles from './Hotkeys.module.css'
 
 export type Hotkey = {
