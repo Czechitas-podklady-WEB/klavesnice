@@ -11,7 +11,6 @@ import {
 import FormControl from '@mui/material/FormControl'
 import { useStorageBackedState } from 'use-storage-backed-state'
 import { HideInPrint } from '../components/HideInPrint'
-import { Images } from '../components/Images'
 import { Keyboard } from '../components/Keyboard'
 import {
 	languages,
@@ -100,9 +99,6 @@ export default function Index() {
 							),
 					),
 				)}
-				<Grid item xs={12}>
-					<Images />
-				</Grid>
 				<Grid item xs={12} className={hideInPrintClass}>
 					<Typography align="right">
 						<Button
