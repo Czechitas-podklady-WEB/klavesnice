@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import FormControl from '@mui/material/FormControl'
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { HideInPrint } from '../components/HideInPrint'
 import { Keyboard } from '../components/Keyboard'
 import {
@@ -40,6 +40,23 @@ export default function Index() {
 		return allValue
 	}, [language])
 
+	const changeQuery = useCallback(
+		(parameterName: string, value: string) => {
+			push({
+				pathname,
+				query: Object.fromEntries(
+					Object.entries({
+						...query,
+						[parameterName]: value === allValue ? null : value,
+					})
+						.filter(([, value]) => value !== null)
+						.sort((a, b) => a[0].localeCompare(b[0], 'en')),
+				),
+			})
+		},
+		[pathname, push, query],
+	)
+
 	return (
 		<Container>
 			<HideInPrint>
@@ -56,17 +73,7 @@ export default function Index() {
 							value={selectedOperatingSystem}
 							label="Operační systém"
 							onChange={({ target: { value } }) => {
-								push({
-									pathname,
-									query: Object.fromEntries(
-										Object.entries({
-											...query,
-											system: value === allValue ? null : value,
-										})
-											.filter(([, value]) => value !== null)
-											.sort((a, b) => a[0].localeCompare(b[0], 'en')),
-									),
-								})
+								changeQuery('system', value)
 							}}
 						>
 							<MenuItem value={allValue}>Všechny</MenuItem>
@@ -86,18 +93,7 @@ export default function Index() {
 							value={selectedLanguage}
 							label="Jazyk"
 							onChange={({ target: { value } }) => {
-								// @TODO: don't repeat yourself
-								push({
-									pathname,
-									query: Object.fromEntries(
-										Object.entries({
-											...query,
-											language: value === allValue ? null : value,
-										})
-											.filter(([, value]) => value !== null)
-											.sort((a, b) => a[0].localeCompare(b[0], 'en')),
-									),
-								})
+								changeQuery('language', value)
 							}}
 						>
 							<MenuItem value={allValue}>Všechny</MenuItem>
