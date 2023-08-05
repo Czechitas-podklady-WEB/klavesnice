@@ -46,11 +46,12 @@ export const hotkeyTargets = {
 	ampersand: {
 		symbol: '&',
 		label: 'Ampersand',
+		note: 'a',
 	},
 	pipe: {
 		symbol: '|',
 		label: 'Svislá čára',
-		note: 'roura',
+		note: 'nebo',
 	},
 	backwardSlash: {
 		symbol: '\\',
@@ -114,7 +115,7 @@ export const hotkeyTargets = {
 	questionMark: {
 		symbol: '?',
 		label: 'Otazník',
-		note: 'ternární operátor',
+		note: 'podmíněný výraz',
 	},
 	exclamationMark: {
 		symbol: '!',
@@ -178,6 +179,10 @@ export const relatedHotkeyTargetGroups: ReadonlyArray<RelatedHotkeyTargetGroup> 
 			{
 				name: 'Uvozovky',
 				targets: ['doubleQuotes', 'singleQuote', 'backtick'],
+			},
+			{
+				name: 'Logické operátory',
+				targets: ['ampersand', 'pipe', 'questionMark', 'exclamationMark'],
 			},
 		]
 
