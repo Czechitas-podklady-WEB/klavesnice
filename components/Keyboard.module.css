@@ -1,6 +1,7 @@
 .wrapper {
 	page-break-inside: avoid;
 	padding-block: 1em;
+	page-break-after: always;
 }
 
 .keyboard {
