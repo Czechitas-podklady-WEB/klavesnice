@@ -9,7 +9,8 @@ import {
 	Typography,
 } from '@mui/material'
 import FormControl from '@mui/material/FormControl'
-import { useStorageBackedState } from 'use-storage-backed-state'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 import { HideInPrint } from '../components/HideInPrint'
 import { Keyboard } from '../components/Keyboard'
 import {
@@ -22,14 +23,22 @@ import { hideInPrintClass } from './_app'
 const allValue = 'all' as const
 
 export default function Index() {
-	const [selectedOperatingSystem, setSelectedOperatingSystem] =
-		useStorageBackedState<typeof allValue | keyof typeof operatingSystems>(
-			allValue,
-			'operating-system',
-		)
-	const [selectedLanguage, setSelectedLanguage] = useStorageBackedState<
-		typeof allValue | keyof typeof languages
-	>(allValue, 'language')
+	const { query, push, pathname } = useRouter()
+
+	const { language, system } = query
+
+	const selectedOperatingSystem = useMemo(() => {
+		if (typeof system === 'string' && system in operatingSystems) {
+			return system
+		}
+		return allValue
+	}, [system])
+	const selectedLanguage = useMemo(() => {
+		if (typeof language === 'string' && language in languages) {
+			return language
+		}
+		return allValue
+	}, [language])
 
 	return (
 		<Container>
@@ -46,9 +55,18 @@ export default function Index() {
 							labelId="operating-system-label"
 							value={selectedOperatingSystem}
 							label="Operační systém"
-							onChange={(event) => {
-								// eslint-disable-next-line @typescript-eslint/no-explicit-any
-								setSelectedOperatingSystem(event.target.value as any)
+							onChange={({ target: { value } }) => {
+								push({
+									pathname,
+									query: Object.fromEntries(
+										Object.entries({
+											...query,
+											system: value === allValue ? null : value,
+										})
+											.filter(([, value]) => value !== null)
+											.sort((a, b) => a[0].localeCompare(b[0], 'en')),
+									),
+								})
 							}}
 						>
 							<MenuItem value={allValue}>Všechny</MenuItem>
@@ -67,9 +85,19 @@ export default function Index() {
 							labelId="language-label"
 							value={selectedLanguage}
 							label="Jazyk"
-							onChange={(event) => {
-								// eslint-disable-next-line @typescript-eslint/no-explicit-any
-								setSelectedLanguage(event.target.value as any)
+							onChange={({ target: { value } }) => {
+								// @TODO: don't repeat yourself
+								push({
+									pathname,
+									query: Object.fromEntries(
+										Object.entries({
+											...query,
+											language: value === allValue ? null : value,
+										})
+											.filter(([, value]) => value !== null)
+											.sort((a, b) => a[0].localeCompare(b[0], 'en')),
+									),
+								})
 							}}
 						>
 							<MenuItem value={allValue}>Všechny</MenuItem>
