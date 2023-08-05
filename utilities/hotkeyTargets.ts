@@ -107,10 +107,6 @@ export const hotkeyTargets = {
 		symbol: '^',
 		label: 'Stříška',
 	},
-	backtick: {
-		symbol: '`',
-		label: 'Zpětný apostrof',
-	},
 	underscore: {
 		symbol: '_',
 		label: 'Podtržítko',
@@ -132,6 +128,10 @@ export const hotkeyTargets = {
 	singleQuote: {
 		symbol: "'",
 		label: 'Apostrof',
+	},
+	backtick: {
+		symbol: '`',
+		label: 'Zpětný apostrof',
 	},
 	dollar: {
 		symbol: '$',
