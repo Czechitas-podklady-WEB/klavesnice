@@ -1,3 +1,10 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: 1em 0.5em;
+	align-items: start;
+}
+
 .item {
 	display: grid;
 	grid-template-columns: 2em 1fr;
@@ -35,5 +42,21 @@
 
 .note {
 	opacity: 0.8;
-	font-size: 0.875em;
+	font-size: 0.75rem;
+}
+
+.relatedGroup {
+	display: grid;
+	row-gap: 0.6em;
+}
+
+.relatedGroup_name {
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: inherit;
+}
+
+.relatedGroup_hotkeys {
+	display: grid;
+	row-gap: 0.3em;
 }

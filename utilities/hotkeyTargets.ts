@@ -20,15 +20,20 @@ export const hotkeyTargets = {
 		label: 'Hvězdička',
 		note: 'krát',
 	},
-	percentage: {
-		symbol: '%',
-		label: 'Procento',
-		note: 'modulo',
+	forwardSlash: {
+		symbol: '/',
+		label: 'Lomítko',
+		note: 'děleno',
 	},
 	equals: {
 		symbol: '=',
 		label: 'Rovnítko',
 		note: 'rovnost, přiřazení',
+	},
+	percentage: {
+		symbol: '%',
+		label: 'Procento',
+		note: 'modulo',
 	},
 	hash: {
 		symbol: '#',
@@ -47,11 +52,6 @@ export const hotkeyTargets = {
 		label: 'Svislá čára',
 		note: 'roura',
 	},
-	forwardSlash: {
-		symbol: '/',
-		label: 'Lomítko',
-		note: 'děleno',
-	},
 	backwardSlash: {
 		symbol: '\\',
 		label: 'Zpětné lomítko',
@@ -67,43 +67,37 @@ export const hotkeyTargets = {
 	},
 	openingRoundBracket: {
 		symbol: '(',
-		label: 'Závorka',
-		note: 'Otevírací kulatá',
+		label: 'Otevírací kulatá',
 	},
 	closingRoundBracket: {
 		symbol: ')',
-		label: 'Závorka',
-		note: 'Zavírací kulatá',
+		label: 'Zavírací kulatá',
 	},
 	openingSquareBracket: {
 		symbol: '[',
-		label: 'Závorka',
-		note: 'Otevírací hranatá',
+		label: 'Otevírací hranatá',
 	},
 	closingSquareBracket: {
 		symbol: ']',
-		label: 'Závorka',
-		note: 'Zavírací hranatá',
+		label: 'Zavírací hranatá',
 	},
 	openingCurlyBracket: {
 		symbol: '{',
-		label: 'Závorka',
-		note: 'Otevírací složená',
+		label: 'Otevírací složená',
 	},
 	closingCurlyBracket: {
 		symbol: '}',
-		label: 'Závorka',
-		note: 'Zavírací složená',
+		label: 'Zavírací složená',
 	},
 	lowerThanBracket: {
 		symbol: '<',
-		label: 'Závorka',
-		note: 'je menší než',
+		label: 'Menší než',
+		note: 'otevírací zobáček',
 	},
 	greaterThanBracket: {
 		symbol: '>',
-		label: 'Závorka',
-		note: 'je větší než',
+		label: 'Větší než',
+		note: 'zavírací zobáček',
 	},
 	tilde: {
 		symbol: '~',
@@ -133,8 +127,7 @@ export const hotkeyTargets = {
 	},
 	doubleQuotes: {
 		symbol: '"',
-		label: 'Uvozovky',
-		note: 'dvojité',
+		label: 'Dvojité',
 	},
 	singleQuote: {
 		symbol: "'",
@@ -147,3 +140,59 @@ export const hotkeyTargets = {
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
 }>
+
+type HotkeyName = keyof typeof hotkeyTargets
+
+type RelatedHotkeyTargetGroup = {
+	name: string
+	targets: HotkeyName[]
+}
+
+export const relatedHotkeyTargetGroups: ReadonlyArray<RelatedHotkeyTargetGroup> =
+	(() => {
+		const named: ReadonlyArray<RelatedHotkeyTargetGroup> = [
+			{
+				name: 'Závorky',
+				targets: [
+					'openingRoundBracket',
+					'closingRoundBracket',
+					'openingSquareBracket',
+					'closingSquareBracket',
+					'openingCurlyBracket',
+					'closingCurlyBracket',
+					'lowerThanBracket',
+					'greaterThanBracket',
+				],
+			},
+			{
+				name: 'Matematická znaménka',
+				targets: [
+					'plus',
+					'minus',
+					'asterisk',
+					'forwardSlash',
+					'equals',
+					'percentage',
+				],
+			},
+			{
+				name: 'Uvozovky',
+				targets: ['doubleQuotes', 'singleQuote'],
+			},
+		]
+
+		const unnamedTargets = Object.keys(hotkeyTargets).filter(
+			(hotkeyTargetName): hotkeyTargetName is HotkeyName =>
+				named.every(
+					({ targets }) => !targets.includes(hotkeyTargetName as HotkeyName),
+				),
+		)
+
+		return [
+			...named,
+			{
+				name: 'Různé',
+				targets: unnamedTargets,
+			},
+		]
+	})()
