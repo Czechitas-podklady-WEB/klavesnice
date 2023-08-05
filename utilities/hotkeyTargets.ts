@@ -139,7 +139,7 @@ export const hotkeyTargets = {
 		label: 'Dvojtečka',
 	},
 	semicolon: {
-		symbol: ':',
+		symbol: ';',
 		label: 'Středník',
 	},
 } satisfies Readonly<{
