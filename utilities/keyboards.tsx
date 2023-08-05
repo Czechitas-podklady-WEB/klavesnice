@@ -996,6 +996,7 @@ export const keyboards = {
 			},
 			leftOption: {
 				tertiary: { label: 'alt' },
+				quaternary: { label: <Icon name="macOption" /> },
 				isSpecial: true,
 				position: { row: 5, column: 7, width: 3, height: 1 },
 			},
@@ -1003,7 +1004,7 @@ export const keyboards = {
 				tertiary: {
 					label: 'cmd',
 				},
-				isSpecial: true,
+				quaternary: { label: <Icon name="macCommand" /> },
 				position: { row: 5, column: 10, width: 4, height: 1 },
 			},
 			spacebar: {
@@ -1012,6 +1013,7 @@ export const keyboards = {
 				position: { row: 5, column: 14, width: 15, height: 1 },
 			},
 			rightCommand: {
+				tertiary: { label: <Icon name="macCommand" /> },
 				quaternary: {
 					label: 'cmd',
 				},
@@ -1019,6 +1021,7 @@ export const keyboards = {
 				position: { row: 5, column: 29, width: 4, height: 1 },
 			},
 			rightOption: {
+				tertiary: { label: <Icon name="macOption" /> },
 				quaternary: { label: 'alt' },
 				isSpecial: true,
 				position: { row: 5, column: 33, width: 3, height: 1 },

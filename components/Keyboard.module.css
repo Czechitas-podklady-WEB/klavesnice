@@ -60,7 +60,7 @@
 	align-items: center;
 }
 
-.key.is_special .part.is_type_primary {
+.key.is_special .part.is_type_primary:last-child {
 	grid-row-end: span 2;
 	grid-column-end: span 2;
 	font-size: 1.2em;
