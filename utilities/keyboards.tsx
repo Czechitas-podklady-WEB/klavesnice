@@ -975,7 +975,7 @@ export const keyboards = {
 				position: { row: 4, column: 32, width: 3, height: 1 },
 			},
 			minus: {
-				primary: { label: '_' },
+				primary: { label: '_', hotkeyTargets: ['underscore'] },
 				tertiary: { label: '-', hotkeyTargets: ['minus'] },
 				position: { row: 4, column: 35, width: 3, height: 1 },
 			},
@@ -990,7 +990,7 @@ export const keyboards = {
 				position: { row: 5, column: 1, width: 3, height: 1 },
 			},
 			control: {
-				tertiary: { label: 'ctrl' },
+				tertiary: { label: 'ctrl', hotkeyTargets: ['picker'] },
 				isSpecial: true,
 				position: { row: 5, column: 4, width: 3, height: 1 },
 			},
@@ -1016,12 +1016,13 @@ export const keyboards = {
 			leftCommand: {
 				tertiary: {
 					label: 'cmd',
+					hotkeyTargets: ['picker'],
 				},
 				quaternary: { label: <Icon name="macCommand" /> },
 				position: { row: 5, column: 10, width: 4, height: 1 },
 			},
 			spacebar: {
-				primary: { label: 'Spacebar' },
+				primary: { label: 'Spacebar', hotkeyTargets: ['picker'] },
 				isSpecial: true,
 				position: { row: 5, column: 14, width: 15, height: 1 },
 			},
