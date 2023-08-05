@@ -147,6 +147,7 @@ type HotkeyName = keyof typeof hotkeyTargets
 type RelatedHotkeyTargetGroup = {
 	name: string
 	targets: HotkeyName[]
+	preferredColumn?: number
 }
 
 export const relatedHotkeyTargetGroups: ReadonlyArray<RelatedHotkeyTargetGroup> =
@@ -179,10 +180,12 @@ export const relatedHotkeyTargetGroups: ReadonlyArray<RelatedHotkeyTargetGroup> 
 			{
 				name: 'Uvozovky',
 				targets: ['doubleQuotes', 'singleQuote', 'backtick'],
+				preferredColumn: 3,
 			},
 			{
 				name: 'Logické operátory',
 				targets: ['ampersand', 'pipe', 'questionMark', 'exclamationMark'],
+				preferredColumn: 3,
 			},
 		]
 

@@ -1,8 +1,26 @@
 .wrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-	gap: 1em 0.5em;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 1em 1em;
 	align-items: start;
+}
+
+@media print, (min-width: 65rem) {
+	/* This layout is very hardcoded and may break if new hotkey group is added */
+	.wrapper {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: 1fr auto;
+	}
+	.relatedGroup {
+		grid-row: 1 / 3;
+	}
+	.relatedGroup.is_columnPreferred {
+		grid-row: 1;
+		grid-column: var(--preferredColumn);
+	}
+	.relatedGroup.is_columnPreferred ~ .relatedGroup.is_columnPreferred {
+		grid-row: 2;
+	}
 }
 
 .item {
@@ -35,6 +53,7 @@
 }
 
 .text {
+	line-height: 1.1;
 }
 
 .label {
@@ -47,13 +66,6 @@
 
 .relatedGroup {
 	display: grid;
-	row-gap: 0.6em;
-}
-
-.relatedGroup_name {
-	margin: 0;
-	font-size: 1.4em;
-	font-weight: inherit;
 }
 
 .relatedGroup_hotkeys {
