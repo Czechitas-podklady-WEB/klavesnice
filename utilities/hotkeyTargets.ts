@@ -35,6 +35,11 @@ export const hotkeyTargets = {
 		label: 'Procento',
 		note: 'modulo',
 	},
+	picker: {
+		symbol: '…',
+		label: 'Vybírátko',
+		note: 'rozšířená klávesnice',
+	},
 	hash: {
 		symbol: '#',
 		label: 'Mřížka',
@@ -56,15 +61,6 @@ export const hotkeyTargets = {
 	backwardSlash: {
 		symbol: '\\',
 		label: 'Zpětné lomítko',
-	},
-	picker: {
-		symbol: '…',
-		label: 'Vybírátko',
-		note: 'rozšířená klávesnice',
-	},
-	semicolon: {
-		symbol: ';',
-		label: 'Středník',
 	},
 	openingRoundBracket: {
 		symbol: '(',
@@ -137,6 +133,10 @@ export const hotkeyTargets = {
 	dollar: {
 		symbol: '$',
 		label: 'Dolar',
+	},
+	semicolon: {
+		symbol: ';',
+		label: 'Středník',
 	},
 } satisfies Readonly<{
 	[name: string]: HotkeyTarget
