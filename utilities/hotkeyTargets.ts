@@ -134,8 +134,12 @@ export const hotkeyTargets = {
 		symbol: '$',
 		label: 'Dolar',
 	},
+	colon: {
+		symbol: ':',
+		label: 'Dvojtečka',
+	},
 	semicolon: {
-		symbol: ';',
+		symbol: ':',
 		label: 'Středník',
 	},
 } satisfies Readonly<{

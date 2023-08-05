@@ -258,6 +258,7 @@ export const keyboards = {
 						'doubleQuotes',
 						'openingRoundBracket',
 						'singleQuote',
+						'colon',
 					],
 				},
 				isSpecial: true,
@@ -310,7 +311,7 @@ export const keyboards = {
 			},
 			stop: {
 				primary: { label: '>', hotkeyTargets: ['greaterThanBracket'] },
-				secondary: { label: ':' },
+				secondary: { label: ':', hotkeyTargets: ['colon'] },
 				tertiary: { label: '.', hotkeyTargets: ['picker'] },
 				position: { row: 4, column: 32, width: 3, height: 1 },
 			},
