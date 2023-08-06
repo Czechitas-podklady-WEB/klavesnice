@@ -23,7 +23,7 @@ import { hideInPrintClass } from './_app'
 const allValue = 'all' as const
 
 export default function Index() {
-	const { query, push, pathname } = useRouter()
+	const { query, push } = useRouter()
 
 	const { language, system } = query
 
@@ -43,7 +43,6 @@ export default function Index() {
 	const changeQuery = useCallback(
 		(parameterName: string, value: string) => {
 			push({
-				pathname,
 				query: Object.fromEntries(
 					Object.entries({
 						...query,
@@ -54,7 +53,7 @@ export default function Index() {
 				),
 			})
 		},
-		[pathname, push, query],
+		[push, query],
 	)
 
 	return (
