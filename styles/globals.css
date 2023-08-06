@@ -3,10 +3,6 @@
 	--group-color-1: #8bfc8b;
 	--group-color-2: #a0dcff;
 	--group-color-3: #ffabff;
-	--group-borderStyle-single: dotted;
-	--group-borderStyle-1: solid;
-	--group-borderStyle-2: dashed;
-	--group-borderStyle-3: outset;
 }
 
 @media (prefers-color-scheme: dark) {
