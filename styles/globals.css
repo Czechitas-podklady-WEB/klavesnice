@@ -3,9 +3,13 @@
 	--group-color-1: #8bfc8b;
 	--group-color-2: #a0dcff;
 	--group-color-3: #ffabff;
+	--group-angle-single: invalid;
+	--group-angle-1: 40deg;
+	--group-angle-2: 80deg;
+	--group-angle-3: 120deg;
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
 	:root {
 		--group-color-single: #a38b1f;
 		--group-color-1: #2db12d;
