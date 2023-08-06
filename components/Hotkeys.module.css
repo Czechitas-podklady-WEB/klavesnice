@@ -27,7 +27,7 @@
 	display: grid;
 	grid-template-columns: 2em 1fr;
 	column-gap: 0.7em;
-	align-items: start;
+	align-items: baseline;
 }
 
 .symbol {
