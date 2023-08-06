@@ -73,8 +73,9 @@ export const windowsCs = {
 		position: { row: 1, column: 31, width: 3, height: 1 },
 	},
 	equal: {
+		primary: { label: '_' },
 		secondary: { label: '%', hotkeyTargets: ['percentage'] },
-		tertiary: { label: '_' },
+		tertiary: { label: '-' },
 		quaternary: { label: '=', hotkeyTargets: ['equals'] },
 		position: { row: 1, column: 34, width: 3, height: 1 },
 	},
