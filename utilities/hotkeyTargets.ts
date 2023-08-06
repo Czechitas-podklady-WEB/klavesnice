@@ -18,12 +18,12 @@ export const hotkeyTargets = {
 	asterisk: {
 		symbol: '*',
 		label: 'Hvězdička',
-		note: 'krát',
+		note: 'násobení',
 	},
 	forwardSlash: {
 		symbol: '/',
 		label: 'Lomítko',
-		note: 'děleno',
+		note: 'dělení',
 	},
 	equals: {
 		symbol: '=',
