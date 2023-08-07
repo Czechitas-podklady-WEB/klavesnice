@@ -2,10 +2,12 @@
 	page-break-inside: avoid;
 }
 
-/* @TODO: fix first keyboard top padding in print */
-
 .wrapper:not(:last-child) {
 	page-break-after: always;
+}
+
+.wrapper + .wrapper {
+	padding-top: 1.5rem;
 }
 
 @media not print {
@@ -14,7 +16,7 @@
 	}
 
 	.wrapper + .wrapper {
-		padding-top: 3em;
+		padding-top: 3rem;
 	}
 }
 
