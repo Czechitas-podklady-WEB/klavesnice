@@ -4,8 +4,8 @@
 	--group-color-1: #8bfc8b;
 	--group-color-2: #a0dcff;
 	--group-color-3: #ffabff;
-	--group-angle-single: invalid;
-	--group-angle-1: 40deg;
+	--group-angle-single: 40deg;
+	--group-angle-1: invalid;
 	--group-angle-2: 80deg;
 	--group-angle-3: 120deg;
 }
