@@ -115,7 +115,7 @@ export default function Index() {
 							))}
 						</ToggleButtonGroup>
 						<ToggleButtonGroup
-							color="secondary"
+							color="primary"
 							value={selectedLanguage}
 							exclusive
 							onChange={(event, newSelectedLanguage) => {
