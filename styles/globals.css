@@ -1,4 +1,5 @@
 :root {
+	overflow-y: scroll;
 	--group-color-single: #ffe589;
 	--group-color-1: #8bfc8b;
 	--group-color-2: #a0dcff;

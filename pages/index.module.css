@@ -1,0 +1,12 @@
+.switchers {
+	display: flex;
+	gap: 1em;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.print {
+	flex-grow: 1;
+	text-align: right;
+}

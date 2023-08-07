@@ -3,12 +3,10 @@ import {
 	Button,
 	Container,
 	Grid,
-	InputLabel,
-	MenuItem,
-	Select,
+	ToggleButton,
+	ToggleButtonGroup,
 	Typography,
 } from '@mui/material'
-import FormControl from '@mui/material/FormControl'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 import { HideInPrint } from '../components/HideInPrint'
@@ -19,6 +17,7 @@ import {
 } from '../utilities/OperatingSystemAndLanguage'
 import { print } from '../utilities/useIsPrinting'
 import { hideInPrintClass } from './_app'
+import styles from './index.module.css'
 
 const allValue = 'all' as const
 
@@ -64,45 +63,54 @@ export default function Index() {
 				</Typography>
 			</HideInPrint>
 			<Grid container spacing={2}>
-				<Grid item xs={12} sm={6} className={hideInPrintClass}>
-					<FormControl sx={{ minWidth: 160 }} fullWidth>
-						<InputLabel id="operating-system-label">Operační systém</InputLabel>
-						<Select
-							labelId="operating-system-label"
+				<Grid item xs={12} className={hideInPrintClass}>
+					<div className={styles.switchers}>
+						<ToggleButtonGroup
+							color="primary"
 							value={selectedOperatingSystem}
-							label="Operační systém"
-							onChange={({ target: { value } }) => {
-								changeQuery('system', value)
+							exclusive
+							onChange={(event, newSelectedOperatingSystem) => {
+								changeQuery('system', newSelectedOperatingSystem)
 							}}
+							aria-label="Operační systém"
 						>
-							<MenuItem value={allValue}>Všechny</MenuItem>
+							<ToggleButton value={allValue}>
+								Všechny operační systémy
+							</ToggleButton>
 							{Object.entries(operatingSystems).map(([key, value]) => (
-								<MenuItem key={key} value={key}>
+								<ToggleButton key={key} value={key}>
 									{value}
-								</MenuItem>
+								</ToggleButton>
 							))}
-						</Select>
-					</FormControl>
-				</Grid>
-				<Grid item xs={12} sm={6} className={hideInPrintClass}>
-					<FormControl sx={{ minWidth: 160 }} fullWidth>
-						<InputLabel id="language-label">Jazyk</InputLabel>
-						<Select
-							labelId="language-label"
+						</ToggleButtonGroup>
+						<ToggleButtonGroup
+							color="secondary"
 							value={selectedLanguage}
-							label="Jazyk"
-							onChange={({ target: { value } }) => {
-								changeQuery('language', value)
+							exclusive
+							onChange={(event, newSelectedLanguage) => {
+								changeQuery('language', newSelectedLanguage)
 							}}
+							aria-label="Jazyk"
 						>
-							<MenuItem value={allValue}>Všechny</MenuItem>
+							<ToggleButton value={allValue}>Všechny jazyky</ToggleButton>
 							{Object.entries(languages).map(([key, value]) => (
-								<MenuItem key={key} value={key}>
+								<ToggleButton key={key} value={key}>
 									{value}
-								</MenuItem>
+								</ToggleButton>
 							))}
-						</Select>
-					</FormControl>
+						</ToggleButtonGroup>
+						<div className={styles.print}>
+							<Button
+								onClick={() => {
+									print()
+								}}
+								variant="outlined"
+								endIcon={<PrintIcon />}
+							>
+								Vytisknout
+							</Button>
+						</div>
+					</div>
 				</Grid>
 				<Grid item xs={12}>
 					{(
@@ -122,19 +130,6 @@ export default function Index() {
 								),
 						),
 					)}
-				</Grid>
-				<Grid item xs={12} className={hideInPrintClass}>
-					<Typography align="right">
-						<Button
-							onClick={() => {
-								print()
-							}}
-							variant="outlined"
-							endIcon={<PrintIcon />}
-						>
-							Vytisknout
-						</Button>
-					</Typography>
 				</Grid>
 			</Grid>
 		</Container>
