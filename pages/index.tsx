@@ -8,7 +8,8 @@ import {
 	Typography,
 } from '@mui/material'
 import { useRouter } from 'next/router'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
+import { getPlatform } from 'react-use-platform'
 import { HideInPrint } from '../components/HideInPrint'
 import { Keyboard } from '../components/Keyboard'
 import {
@@ -22,7 +23,7 @@ import styles from './index.module.css'
 const allValue = 'all' as const
 
 export default function Index() {
-	const { query, push } = useRouter()
+	const { query, push, isReady } = useRouter()
 
 	const { language, system } = query
 
@@ -40,12 +41,17 @@ export default function Index() {
 	}, [language])
 
 	const changeQuery = useCallback(
-		(parameterName: string, value: string) => {
+		(parameters: Array<{ name: string; value: string }>) => {
+			if (parameters.length === 0) {
+				return
+			}
 			push({
 				query: Object.fromEntries(
 					Object.entries({
 						...query,
-						[parameterName]: value === allValue ? null : value,
+						...Object.fromEntries(
+							parameters.map(({ name, value }) => [name, value]),
+						),
 					})
 						.filter(([, value]) => value !== null)
 						.sort((a, b) => a[0].localeCompare(b[0], 'en')),
@@ -54,6 +60,26 @@ export default function Index() {
 		},
 		[push, query],
 	)
+
+	useEffect(() => {
+		const sessionKey = 'visited'
+		if (isReady && sessionStorage.getItem(sessionKey) === null) {
+			sessionStorage.setItem(sessionKey, 'true')
+			if (
+				selectedOperatingSystem === allValue &&
+				selectedLanguage === allValue
+			) {
+				const platform = getPlatform()
+				changeQuery([
+					{
+						name: 'system',
+						value: platform in operatingSystems ? platform : allValue,
+					},
+					{ name: 'language', value: 'cs' },
+				])
+			}
+		}
+	}, [changeQuery, isReady, selectedLanguage, selectedOperatingSystem])
 
 	return (
 		<Container>
@@ -70,7 +96,12 @@ export default function Index() {
 							value={selectedOperatingSystem}
 							exclusive
 							onChange={(event, newSelectedOperatingSystem) => {
-								changeQuery('system', newSelectedOperatingSystem)
+								changeQuery([
+									{
+										name: 'system',
+										value: newSelectedOperatingSystem,
+									},
+								])
 							}}
 							aria-label="Operační systém"
 						>
@@ -88,7 +119,7 @@ export default function Index() {
 							value={selectedLanguage}
 							exclusive
 							onChange={(event, newSelectedLanguage) => {
-								changeQuery('language', newSelectedLanguage)
+								changeQuery([{ name: 'language', value: newSelectedLanguage }])
 							}}
 							aria-label="Jazyk"
 						>
