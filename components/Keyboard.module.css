@@ -20,6 +20,28 @@
 	}
 }
 
+.header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 1rem;
+}
+
+.name {
+}
+
+.link {
+	font-size: 0.9375rem;
+	flex-grow: 1;
+	text-align: right;
+}
+
+@media not print {
+	.link {
+		display: none;
+	}
+}
+
 .keyboard {
 	--gap: 0.25em;
 	display: grid;

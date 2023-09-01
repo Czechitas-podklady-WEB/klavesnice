@@ -98,8 +98,13 @@ export const Keyboard: FunctionComponent<KeyboardProps> = ({
 	return (
 		<div className={styles.wrapper}>
 			<Typography variant="h4" component="h2" gutterBottom>
-				{operatingSystems[operatingSystem]}{' '}
-				{languages[language].toLocaleLowerCase('cs')}
+				<div className={styles.header}>
+					<span className={styles.name}>
+						{operatingSystems[operatingSystem]}{' '}
+						{languages[language].toLocaleLowerCase('cs')}
+					</span>
+					<span className={styles.link}>klavesnice.czechitas-podklady.cz</span>
+				</div>
 			</Typography>
 			<div className={styles.keyboard}>
 				{Object.entries(keys).map(([name, key]) => (
