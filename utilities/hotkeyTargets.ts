@@ -43,6 +43,7 @@ export const hotkeyTargets = {
 	hash: {
 		symbol: '#',
 		label: 'Mřížka',
+		note: 'hash',
 	},
 	atSign: {
 		symbol: '@',
@@ -99,6 +100,7 @@ export const hotkeyTargets = {
 	tilde: {
 		symbol: '~',
 		label: 'Vlnovka',
+		note: 'tilda',
 	},
 	caret: {
 		symbol: '^',
